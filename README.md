@@ -41,7 +41,7 @@
 ## 로컬에서 실행
 
 ```bash
-git clone https://github.com/YOUR/tactical-atlas.git](https://github.com/juncrose/Tactical-Atlas.git
+git clone https://github.com/juncrose/Tactical-Atlas.git
 cd Tactical-Atlas
 npm install
 npm run dev         # 로컬 서버 띄우기
