@@ -1,0 +1,141 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://tactical-atlas.org/schemas/simulation.schema.json",
+  "title": "Battle Simulation",
+  "description": "시간축 작전 시뮬레이션. 키프레임 기반 선언적 DSL.",
+  "type": "object",
+  "required": ["battle_id", "duration_h", "bounds", "t_label", "units"],
+  "properties": {
+    "battle_id": {
+      "type": "string",
+      "description": "battles/{id}.json의 ID와 동일해야 함"
+    },
+    "duration_h": {
+      "type": "number",
+      "minimum": 0.5,
+      "description": "총 시뮬레이션 길이 (시간 단위)"
+    },
+    "bounds": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "items": { "type": "number" }
+      },
+      "description": "[[남위, 서경], [북위, 동경]] 지도 초기 뷰포트"
+    },
+    "t_label": {
+      "type": "object",
+      "required": ["format"],
+      "description": "시간 라벨 표시 방식 — 함수 대신 템플릿으로 선언",
+      "properties": {
+        "format": {
+          "type": "string",
+          "enum": ["h_plus", "day_hour", "wall_clock", "date_hour", "custom"],
+          "description": "h_plus: H+02:30 / day_hour: Day 3 14:00 / wall_clock: 현지시각 / date_hour: 1944-06-06 06:30 / custom: template 필드 사용"
+        },
+        "start_wall_time": {
+          "type": "string",
+          "pattern": "^[0-9]{2}:[0-9]{2}$",
+          "description": "wall_clock 모드에서 H+00:00에 해당하는 현지시각 (예: 05:00)"
+        },
+        "start_date": {
+          "type": "string",
+          "format": "date",
+          "description": "date_hour 모드의 시작일"
+        },
+        "day_offset": {
+          "type": "integer",
+          "description": "day_hour 모드에서 Day 1을 H+0이 아닌 다른 시점으로 (예: 26 → Day 26)"
+        },
+        "template": {
+          "type": "string",
+          "description": "custom 모드의 출력 템플릿. 변수: {h}, {m}, {wallh}, {wallm}, {day}"
+        }
+      }
+    },
+    "phases": {
+      "type": "array",
+      "description": "주요 국면. 타임라인에 마커로 표시됨",
+      "items": {
+        "type": "object",
+        "required": ["t", "label"],
+        "properties": {
+          "t": { "type": "number", "minimum": 0, "description": "국면 시작 시점 (시간)" },
+          "label": { "type": "string", "description": "국면 설명" }
+        }
+      }
+    },
+    "units": {
+      "type": "array",
+      "minItems": 1,
+      "description": "전투에 참가하는 모든 부대",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "type", "side", "keyframes"],
+        "properties": {
+          "id": { "type": "string", "description": "유닛 고유 ID" },
+          "name": { "type": "string" },
+          "name_en": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": [
+              "infantry", "infantry_combined", "infantry_coastal", "infantry_mechanized",
+              "armor", "armor_combined",
+              "artillery", "cavalry",
+              "amphibious", "airborne",
+              "naval_fleet", "naval_carrier", "naval_battleship", "naval_air",
+              "air_squadron", "air_fighter", "air_bomber", "air_base",
+              "hq", "engineer", "supply", "decoy"
+            ],
+            "description": "NATO APP-6 호환 유닛 타입"
+          },
+          "side": { "type": "string", "description": "battle.sides[].color와 일치" },
+          "commander": { "type": "string" },
+          "strength": { "type": "string", "description": "병력/장비 규모 자유 표기" },
+          "keyframes": {
+            "type": "array",
+            "minItems": 2,
+            "description": "시간순으로 정렬된 키프레임. 사이는 선형 보간됨.",
+            "items": {
+              "type": "object",
+              "required": ["t", "pos"],
+              "properties": {
+                "t": {
+                  "type": "number",
+                  "description": "시점 (시간). 음수 허용 — 본 작전 시작 전 양동/사전 활동 표현용. duration_h를 넘으면 안 됨"
+                },
+                "pos": {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 2,
+                  "items": { "type": "number" },
+                  "description": "[위도, 경도]"
+                },
+                "status": {
+                  "type": "string",
+                  "description": "이 시점의 부대 상태 (예: '진격 중', '교두보 확보')"
+                },
+                "order": {
+                  "type": "string",
+                  "description": "이 시점의 명령"
+                },
+                "objective": {
+                  "type": "string",
+                  "description": "이 시점의 목표"
+                },
+                "destroyed": {
+                  "type": "boolean",
+                  "description": "이 시점에 부대가 격멸/궤멸되었는지 (지도에서 회색 처리)"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,212 @@
+{
+  "version": "0.2.0",
+  "generated_at": "2026-05-24T08:30:19.228Z",
+  "total_battles": 14,
+  "total_simulations": 3,
+  "eras": [
+    "ww1",
+    "interwar",
+    "ww2",
+    "korean_war",
+    "cold_war",
+    "modern"
+  ],
+  "battles": [
+    {
+      "id": "tannenberg_1914",
+      "name": "타넨베르크 전투",
+      "name_en": "Battle of Tannenberg",
+      "era": "ww1",
+      "year": 1914,
+      "year_decimal": 1914.65,
+      "date_display": "1914년 8월 26-30일",
+      "coords": [
+        53.498,
+        20.135
+      ],
+      "has_simulation": true
+    },
+    {
+      "id": "verdun_1916",
+      "name": "베르됭 전투",
+      "name_en": "Battle of Verdun",
+      "era": "ww1",
+      "year": 1916,
+      "year_decimal": 1916.15,
+      "date_display": "1916년 2월 21일 - 12월 18일",
+      "coords": [
+        49.16,
+        5.38
+      ],
+      "has_simulation": false
+    },
+    {
+      "id": "france_1940",
+      "name": "프랑스 침공 (낫질 작전)",
+      "name_en": "Fall of France · Sichelschnitt",
+      "era": "ww2",
+      "year": 1940,
+      "year_decimal": 1940.35,
+      "date_display": "1940년 5월 10일 - 6월 25일",
+      "coords": [
+        50.04,
+        4.86
+      ],
+      "has_simulation": false
+    },
+    {
+      "id": "midway_1942",
+      "name": "미드웨이 해전",
+      "name_en": "Battle of Midway",
+      "era": "ww2",
+      "year": 1942,
+      "year_decimal": 1942.42,
+      "date_display": "1942년 6월 4-7일",
+      "coords": [
+        28.207,
+        -177.378
+      ],
+      "has_simulation": true
+    },
+    {
+      "id": "stalingrad_1942",
+      "name": "스탈린그라드 전투",
+      "name_en": "Battle of Stalingrad",
+      "era": "ww2",
+      "year": 1942,
+      "year_decimal": 1942.6,
+      "date_display": "1942년 8월 23일 - 1943년 2월 2일",
+      "coords": [
+        48.708,
+        44.514
+      ],
+      "has_simulation": false
+    },
+    {
+      "id": "normandy_1944",
+      "name": "노르망디 상륙작전",
+      "name_en": "D-Day · Operation Overlord",
+      "era": "ww2",
+      "year": 1944,
+      "year_decimal": 1944.43,
+      "date_display": "1944년 6월 6일",
+      "coords": [
+        49.34,
+        -0.85
+      ],
+      "has_simulation": false
+    },
+    {
+      "id": "nakdong_1950",
+      "name": "낙동강 방어선",
+      "name_en": "Pusan Perimeter",
+      "era": "korean_war",
+      "year": 1950,
+      "year_decimal": 1950.59,
+      "date_display": "1950년 8월 4일 - 9월 15일",
+      "coords": [
+        35.85,
+        128.6
+      ],
+      "has_simulation": false
+    },
+    {
+      "id": "dabudong_1950",
+      "name": "다부동 전투",
+      "name_en": "Battle of Dabudong",
+      "era": "korean_war",
+      "year": 1950,
+      "year_decimal": 1950.62,
+      "date_display": "1950년 8월 13일 - 9월 22일",
+      "coords": [
+        36.083,
+        128.45
+      ],
+      "has_simulation": false
+    },
+    {
+      "id": "inchon_1950",
+      "name": "인천상륙작전",
+      "name_en": "Battle of Inchon · Op. Chromite",
+      "era": "korean_war",
+      "year": 1950,
+      "year_decimal": 1950.71,
+      "date_display": "1950년 9월 15일",
+      "coords": [
+        37.452,
+        126.598
+      ],
+      "has_simulation": true
+    },
+    {
+      "id": "chosin_1950",
+      "name": "장진호 전투",
+      "name_en": "Battle of Chosin Reservoir",
+      "era": "korean_war",
+      "year": 1950,
+      "year_decimal": 1950.91,
+      "date_display": "1950년 11월 27일 - 12월 13일",
+      "coords": [
+        40.45,
+        127.25
+      ],
+      "has_simulation": false
+    },
+    {
+      "id": "hyeonri_1951",
+      "name": "현리 전투",
+      "name_en": "Battle of Hyeonri",
+      "era": "korean_war",
+      "year": 1951,
+      "year_decimal": 1951.39,
+      "date_display": "1951년 5월 16-22일",
+      "coords": [
+        38.085,
+        128.305
+      ],
+      "has_simulation": false
+    },
+    {
+      "id": "baekma_1952",
+      "name": "백마고지 전투",
+      "name_en": "Battle of White Horse Hill",
+      "era": "korean_war",
+      "year": 1952,
+      "year_decimal": 1952.77,
+      "date_display": "1952년 10월 6-15일",
+      "coords": [
+        38.275,
+        127
+      ],
+      "has_simulation": false
+    },
+    {
+      "id": "six_day_1967",
+      "name": "6일 전쟁",
+      "name_en": "Six-Day War",
+      "era": "cold_war",
+      "year": 1967,
+      "year_decimal": 1967.42,
+      "date_display": "1967년 6월 5-10일",
+      "coords": [
+        31.5,
+        34.95
+      ],
+      "has_simulation": false
+    },
+    {
+      "id": "gulf_1991",
+      "name": "걸프전 (사막의 폭풍)",
+      "name_en": "Gulf War · Op. Desert Storm",
+      "era": "modern",
+      "year": 1991,
+      "year_decimal": 1991.13,
+      "date_display": "1991년 1월 17일 - 2월 28일",
+      "coords": [
+        29.37,
+        47.98
+      ],
+      "has_simulation": false
+    }
+  ]
+}

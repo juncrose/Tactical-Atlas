@@ -1,0 +1,488 @@
+{
+  "battle_id": "midway_1942",
+  "duration_h": 60,
+  "bounds": [
+    [
+      26,
+      -178.5
+    ],
+    [
+      30.5,
+      -175
+    ]
+  ],
+  "t_label": {
+    "format": "day_hour",
+    "day_offset": 4
+  },
+  "phases": [
+    {
+      "t": 0,
+      "label": "국면 1 · 04:30 — 일본 항모 발진"
+    },
+    {
+      "t": 2,
+      "label": "국면 2 · 06:30 — 미드웨이 1차 공격"
+    },
+    {
+      "t": 5,
+      "label": "국면 3 · 09:30 — 무장 전환 명령"
+    },
+    {
+      "t": 6,
+      "label": "국면 4 · 10:25 — 결정의 5분"
+    },
+    {
+      "t": 12,
+      "label": "국면 5 · 16:00 — 히류 격침"
+    },
+    {
+      "t": 36,
+      "label": "국면 6 · 6월 5일 — 잔존 함대 추격"
+    }
+  ],
+  "units": [
+    {
+      "id": "jpn_kido_butai",
+      "name": "일본 제1항공함대 (기동부대)",
+      "name_en": "IJN 1st Air Fleet (Kidō Butai)",
+      "type": "naval_air",
+      "side": "japanese",
+      "commander": "나구모 주이치 제독",
+      "strength": "항모 4척 (赤城·加賀·蒼龍·飛龍)",
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            28.6,
+            -177.7
+          ],
+          "status": "항공 발진",
+          "order": "미드웨이 폭격대 발진",
+          "objective": "미드웨이 비행장 무력화"
+        },
+        {
+          "t": 2,
+          "pos": [
+            28.5,
+            -177.6
+          ],
+          "status": "대기",
+          "order": "귀환 대기",
+          "objective": "2차 공격 준비"
+        },
+        {
+          "t": 4.5,
+          "pos": [
+            28.4,
+            -177.55
+          ],
+          "status": "무장 전환 중",
+          "order": "무장 함선용→지상용 전환",
+          "objective": "미드웨이 재공격"
+        },
+        {
+          "t": 5.5,
+          "pos": [
+            28.35,
+            -177.5
+          ],
+          "status": "무장 재전환",
+          "order": "미군 항모 발견, 함선용 무장 재전환",
+          "objective": "미 항모 공격 (혼란)"
+        },
+        {
+          "t": 6.2,
+          "pos": [
+            28.3,
+            -177.5
+          ],
+          "status": "치명타 (3척)",
+          "order": "─",
+          "objective": "─",
+          "destroyed": true,
+          "partial": true
+        },
+        {
+          "t": 12,
+          "pos": [
+            28.2,
+            -177.4
+          ],
+          "status": "히류 격침",
+          "order": "─",
+          "objective": "─",
+          "destroyed": true
+        },
+        {
+          "t": 36,
+          "pos": [
+            28,
+            -177.2
+          ],
+          "status": "괴멸",
+          "order": "잔존 함대 야마모토 본대 합류 시도",
+          "objective": "─",
+          "destroyed": true
+        }
+      ]
+    },
+    {
+      "id": "jpn_main_force",
+      "name": "일본 연합함대 본대",
+      "name_en": "IJN Main Body (Yamamoto)",
+      "type": "naval_fleet",
+      "side": "japanese",
+      "commander": "야마모토 이소로쿠 제독",
+      "strength": "전함 야마토 외 다수",
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            27.5,
+            -179.5
+          ],
+          "status": "서쪽 후방 대기",
+          "order": "기동부대 후방 지원",
+          "objective": "미국 함대 유인 후 격멸"
+        },
+        {
+          "t": 12,
+          "pos": [
+            27.5,
+            -179.3
+          ],
+          "status": "동쪽 전진",
+          "order": "미 항모 야간전 유인",
+          "objective": "전함 우위 활용"
+        },
+        {
+          "t": 24,
+          "pos": [
+            27,
+            -179
+          ],
+          "status": "전진 중",
+          "order": "야간 결전 시도",
+          "objective": "─"
+        },
+        {
+          "t": 30,
+          "pos": [
+            27,
+            -179
+          ],
+          "status": "철수 명령",
+          "order": "작전 중단, 서쪽 철수",
+          "objective": "잔존 함대 보전"
+        },
+        {
+          "t": 60,
+          "pos": [
+            26.5,
+            -180
+          ],
+          "status": "철수 중",
+          "order": "괌 방향 철수",
+          "objective": "─"
+        }
+      ]
+    },
+    {
+      "id": "jpn_invasion_force",
+      "name": "일본 미드웨이 침공부대",
+      "name_en": "IJN Midway Invasion Force",
+      "type": "naval_fleet",
+      "side": "japanese",
+      "commander": "곤도 노부타케 제독",
+      "strength": "수송선 + 호위",
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            27,
+            -178.5
+          ],
+          "status": "서남쪽 대기",
+          "order": "미드웨이 점령 후 상륙 준비",
+          "objective": "미드웨이 점령"
+        },
+        {
+          "t": 12,
+          "pos": [
+            27,
+            -178.3
+          ],
+          "status": "대기",
+          "order": "항공우위 대기",
+          "objective": "─"
+        },
+        {
+          "t": 24,
+          "pos": [
+            26.8,
+            -178.5
+          ],
+          "status": "철수 명령",
+          "order": "작전 중단, 철수",
+          "objective": "─"
+        },
+        {
+          "t": 60,
+          "pos": [
+            26,
+            -179.5
+          ],
+          "status": "철수 중",
+          "order": "서쪽 철수",
+          "objective": "─"
+        }
+      ]
+    },
+    {
+      "id": "us_tf16",
+      "name": "미 TF-16 (엔터프라이즈·호넷)",
+      "name_en": "US Task Force 16",
+      "type": "naval_air",
+      "side": "us",
+      "commander": "레이먼드 스프루언스 제독",
+      "strength": "항모 2척 (CV-6 · CV-8)",
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            29.5,
+            -176
+          ],
+          "status": "매복 중",
+          "order": "일본 항모 발견 대기",
+          "objective": "일본 기동부대 격멸"
+        },
+        {
+          "t": 3,
+          "pos": [
+            29.3,
+            -176.2
+          ],
+          "status": "항공 발진",
+          "order": "데바스테이터·돈틀리스 발진",
+          "objective": "일본 항모 공격"
+        },
+        {
+          "t": 5.8,
+          "pos": [
+            29.1,
+            -176.5
+          ],
+          "status": "공격 진행",
+          "order": "맥클러스키 편대 강타",
+          "objective": "결정타 (적기 무장 전환 중)"
+        },
+        {
+          "t": 6.3,
+          "pos": [
+            29,
+            -176.7
+          ],
+          "status": "교전 중",
+          "order": "잔여 일본 항모 추격",
+          "objective": "히류 격침"
+        },
+        {
+          "t": 12,
+          "pos": [
+            28.7,
+            -177
+          ],
+          "status": "추격 중",
+          "order": "히류 격침 작전",
+          "objective": "4번째 항모 격침"
+        },
+        {
+          "t": 24,
+          "pos": [
+            28,
+            -177.5
+          ],
+          "status": "경계",
+          "order": "야마모토 본대 경계",
+          "objective": "추가 교전 회피"
+        },
+        {
+          "t": 36,
+          "pos": [
+            28.5,
+            -178
+          ],
+          "status": "추격",
+          "order": "잔존 함정 추격",
+          "objective": "소탕"
+        },
+        {
+          "t": 60,
+          "pos": [
+            29,
+            -178.5
+          ],
+          "status": "귀환",
+          "order": "진주만 귀환",
+          "objective": "─"
+        }
+      ]
+    },
+    {
+      "id": "us_tf17",
+      "name": "미 TF-17 (요크타운)",
+      "name_en": "US Task Force 17",
+      "type": "naval_air",
+      "side": "us",
+      "commander": "프랭크 잭 플레처 제독",
+      "strength": "항모 1척 (CV-5)",
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            29.6,
+            -175.8
+          ],
+          "status": "매복 중",
+          "order": "일본 항모 격멸",
+          "objective": "─"
+        },
+        {
+          "t": 4,
+          "pos": [
+            29.4,
+            -176
+          ],
+          "status": "항공 발진",
+          "order": "돈틀리스 발진",
+          "objective": "일본 항모 격침"
+        },
+        {
+          "t": 6.5,
+          "pos": [
+            29.2,
+            -176.3
+          ],
+          "status": "강타 명중",
+          "order": "소류 격침",
+          "objective": "─"
+        },
+        {
+          "t": 9,
+          "pos": [
+            29,
+            -176.5
+          ],
+          "status": "피격",
+          "order": "히류 반격에 피격",
+          "objective": "함체 방어"
+        },
+        {
+          "t": 16,
+          "pos": [
+            28.8,
+            -176.7
+          ],
+          "status": "대파",
+          "order": "함체 안정화",
+          "objective": "귀환 시도"
+        },
+        {
+          "t": 36,
+          "pos": [
+            28.7,
+            -176.7
+          ],
+          "status": "잠수함 어뢰",
+          "order": "─",
+          "objective": "─",
+          "destroyed": true
+        },
+        {
+          "t": 48,
+          "pos": [
+            28.7,
+            -176.7
+          ],
+          "status": "침몰",
+          "order": "─",
+          "objective": "─",
+          "destroyed": true
+        }
+      ]
+    },
+    {
+      "id": "us_midway",
+      "name": "미드웨이 비행장 (지상기지)",
+      "name_en": "Midway NAS",
+      "type": "air_base",
+      "side": "us",
+      "commander": "시릴 시매드 대령",
+      "strength": "약 100기 (B-17·SBD·F4F 등)",
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            28.2,
+            -177.37
+          ],
+          "status": "경계 중",
+          "order": "일본 함대 정찰",
+          "objective": "─"
+        },
+        {
+          "t": 1,
+          "pos": [
+            28.2,
+            -177.37
+          ],
+          "status": "발진",
+          "order": "일본 함대 공격기 발진",
+          "objective": "항모 공격 (대부분 실패)"
+        },
+        {
+          "t": 2.5,
+          "pos": [
+            28.2,
+            -177.37
+          ],
+          "status": "피습",
+          "order": "대공 방어",
+          "objective": "활주로 방어"
+        },
+        {
+          "t": 6,
+          "pos": [
+            28.2,
+            -177.37
+          ],
+          "status": "교전 중",
+          "order": "잔여 항공기 운용",
+          "objective": "항모 지원"
+        },
+        {
+          "t": 24,
+          "pos": [
+            28.2,
+            -177.37
+          ],
+          "status": "복구 중",
+          "order": "시설 복구",
+          "objective": "─"
+        },
+        {
+          "t": 60,
+          "pos": [
+            28.2,
+            -177.37
+          ],
+          "status": "정상화",
+          "order": "운영 재개",
+          "objective": "─"
+        }
+      ]
+    }
+  ]
+}
