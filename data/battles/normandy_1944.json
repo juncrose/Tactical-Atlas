@@ -1,0 +1,73 @@
+{
+  "id": "normandy_1944",
+  "name": "노르망디 상륙작전",
+  "name_en": "D-Day · Operation Overlord",
+  "era": "ww2",
+  "year": 1944,
+  "year_decimal": 1944.43,
+  "date_display": "1944년 6월 6일",
+  "coords": [
+    49.34,
+    -0.85
+  ],
+  "sides": [
+    {
+      "name": "연합군",
+      "commander": "아이젠하워 · 몽고메리",
+      "troops": 156000,
+      "casualties": 10000,
+      "color": "blue",
+      "victor": true,
+      "symbol": "amphibious"
+    },
+    {
+      "name": "독일 국방군 (서부)",
+      "commander": "룬트슈테트 · 롬멜",
+      "troops": 50000,
+      "casualties": 9000,
+      "color": "red",
+      "victor": false,
+      "symbol": "infantry_combined"
+    }
+  ],
+  "tactics": [
+    {
+      "ko": "대규모 기만 (포티튜드)",
+      "en": "Operation Fortitude",
+      "desc": "파-드-칼레로 가짜 1군 집결 — 더미 전차·가짜 무선 교신으로 독일군 시선 유도"
+    },
+    {
+      "ko": "대규모 상륙작전",
+      "en": "Largest Amphibious Op in History",
+      "desc": "5개 해변(유타·오마하·골드·주노·소드) 동시 상륙"
+    },
+    {
+      "ko": "제공·제해권",
+      "en": "Air & Sea Supremacy",
+      "desc": "11000기 항공기, 7000척 함정으로 절대적 화력우위 확보"
+    }
+  ],
+  "significance": "<strong>역사상 최대 상륙작전.</strong> 포티튜드 기만작전으로 독일군 15군을 파-드-칼레에 묶어둔 채 노르망디에 5개 해변 동시 상륙. 서부전선 형성으로 독일은 양면전쟁에 내몰려 11개월 후 항복.",
+  "description": "연합군은 1944년 초부터 패튼을 총사령관으로 한 가짜 \"미 1군\"을 영국 동남부에 배치하는 척했다. 고무 전차, 가짜 무선 교신, 이중간첩으로 독일 정보부를 속였다. 6월 6일 새벽 영공항 강하 후 5개 해변 동시 상륙. 오마하 해변만 큰 사상자가 났고 D+1까지 모든 해변 연결, D+7까지 100km 종심 확보.",
+  "influenced_by": [],
+  "influences": [],
+  "has_simulation": false,
+  "sources": [
+    {
+      "type": "book",
+      "citation": "Beevor, A. (2009). D-Day: The Battle for Normandy. Viking."
+    },
+    {
+      "type": "book",
+      "citation": "Ambrose, S. (1994). D-Day, June 6, 1944. Simon & Schuster."
+    }
+  ],
+  "wikidata_id": "Q49108",
+  "wikipedia": {
+    "ko": "https://ko.wikipedia.org/wiki/노르망디_상륙_작전",
+    "en": "https://en.wikipedia.org/wiki/Normandy_landings"
+  },
+  "contributors": [],
+  "last_reviewed": null,
+  "review_status": "community"
+}

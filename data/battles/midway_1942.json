@@ -1,0 +1,75 @@
+{
+  "id": "midway_1942",
+  "name": "미드웨이 해전",
+  "name_en": "Battle of Midway",
+  "era": "ww2",
+  "year": 1942,
+  "year_decimal": 1942.42,
+  "date_display": "1942년 6월 4-7일",
+  "coords": [
+    28.207,
+    -177.378
+  ],
+  "sides": [
+    {
+      "name": "미국 해군 (TF-16/17)",
+      "commander": "체스터 니미츠 · 스프루언스 · 플레처",
+      "troops": 3,
+      "casualties": 1,
+      "color": "blue",
+      "victor": true,
+      "symbol": "naval_air",
+      "troop_unit": "항모"
+    },
+    {
+      "name": "일본 해군 (제1항공함대)",
+      "commander": "야마모토 · 나구모",
+      "troops": 4,
+      "casualties": 4,
+      "color": "red",
+      "victor": false,
+      "symbol": "naval_air",
+      "troop_unit": "항모"
+    }
+  ],
+  "tactics": [
+    {
+      "ko": "정보우위",
+      "en": "Intelligence Dominance",
+      "desc": "JN-25 해독으로 일본의 공격 시점·목표 사전 파악, 매복 위치 선점"
+    },
+    {
+      "ko": "결정 타이밍",
+      "en": "Decisive Timing",
+      "desc": "일본 항모가 무장 전환 중일 때 급강하 폭격으로 격침"
+    },
+    {
+      "ko": "항모전력 집중",
+      "en": "Concentrated Carrier Strike",
+      "desc": "항공모함이 전함을 대체한 전쟁의 분기점"
+    }
+  ],
+  "significance": "<strong>정보우위가 수적 열세를 뒤집은 전형.</strong> 일본 항모 4척 전부 격침, 미국 1척 손실. <strong>전함의 시대가 끝나고 항공모함의 시대가 시작</strong>된 분기점. \"5분\"이라 불리는 결정적 시점에 일본 항모 갑판이 무장 전환 중일 때 미군 급강하 폭격기가 정확히 강타.",
+  "description": "미 해군 정보부 HYPO가 JN-25 암호를 부분 해독해 \"AF\"가 미드웨이임을 확인. 니미츠는 3척 항모를 미드웨이 북동쪽 매복. 6월 4일 아침, 일본 항모는 미드웨이 공격 후 무장 전환(함선용→지상용→함선용) 중 매캐든 급강하 폭격기에 강타당해 5분 만에 3척이 화염에 휩싸였다.",
+  "influenced_by": [],
+  "influences": [],
+  "has_simulation": true,
+  "sources": [
+    {
+      "type": "book",
+      "citation": "Parshall, J. & Tully, A. (2005). Shattered Sword: The Untold Story of the Battle of Midway. Potomac Books."
+    },
+    {
+      "type": "book",
+      "citation": "Symonds, C. (2011). The Battle of Midway. Oxford University Press."
+    }
+  ],
+  "wikidata_id": "Q131801",
+  "wikipedia": {
+    "ko": "https://ko.wikipedia.org/wiki/미드웨이_해전",
+    "en": "https://en.wikipedia.org/wiki/Battle_of_Midway"
+  },
+  "contributors": [],
+  "last_reviewed": null,
+  "review_status": "community"
+}

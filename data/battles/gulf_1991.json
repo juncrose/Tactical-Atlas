@@ -1,0 +1,73 @@
+{
+  "id": "gulf_1991",
+  "name": "걸프전 (사막의 폭풍)",
+  "name_en": "Gulf War · Op. Desert Storm",
+  "era": "modern",
+  "year": 1991,
+  "year_decimal": 1991.13,
+  "date_display": "1991년 1월 17일 - 2월 28일",
+  "coords": [
+    29.37,
+    47.98
+  ],
+  "sides": [
+    {
+      "name": "연합군 (34개국)",
+      "commander": "노먼 슈워츠코프",
+      "troops": 956000,
+      "casualties": 1143,
+      "color": "blue",
+      "victor": true,
+      "symbol": "armor_combined"
+    },
+    {
+      "name": "이라크",
+      "commander": "사담 후세인",
+      "troops": 650000,
+      "casualties": 100000,
+      "color": "red",
+      "victor": false,
+      "symbol": "armor_combined"
+    }
+  ],
+  "tactics": [
+    {
+      "ko": "좌훅 기동",
+      "en": "Left Hook Maneuver",
+      "desc": "쿠웨이트 정면 견제, 서쪽으로 우회해 이라크 공화국수비대 후방 포위"
+    },
+    {
+      "ko": "공지전투",
+      "en": "AirLand Battle",
+      "desc": "38일간 항공전 후 100시간 지상전 — 지상전 이전에 적 70% 무력화"
+    },
+    {
+      "ko": "정밀유도무기",
+      "en": "Precision Munitions",
+      "desc": "레이저·GPS 유도탄으로 통신·지휘부 외과수술적 타격"
+    }
+  ],
+  "significance": "<strong>현대 공지전투(AirLand Battle) 교리의 완성.</strong> 38일간 38000회 출격, 이후 100시간 지상전. 슈워츠코프의 \"좌훅\" 기동은 칸나이의 현대 사막판. <strong>정보·정밀·기동의 결합</strong>이 전쟁의 새 패러다임을 정의.",
+  "description": "연합군은 1991년 1월 17일 공습 시작, 38일간 이라크 통신·방공·지휘부를 정밀유도무기로 마비. 2월 24일 지상전 개시. 슈워츠코프는 해병대로 쿠웨이트 정면을 견제하는 척, 미 7군단과 18공정군단이 서쪽 사막을 800km 우회해 이라크 공화국수비대 후방을 강타. 100시간 만에 쿠웨이트 해방, 휴전 선언.",
+  "influenced_by": [],
+  "influences": [],
+  "has_simulation": false,
+  "sources": [
+    {
+      "type": "book",
+      "citation": "Atkinson, R. (1993). Crusade: The Untold Story of the Persian Gulf War. Houghton Mifflin."
+    },
+    {
+      "type": "book",
+      "citation": "Gordon, M. & Trainor, B. (1995). The Generals' War. Little, Brown."
+    }
+  ],
+  "wikidata_id": "Q37643",
+  "wikipedia": {
+    "ko": "https://ko.wikipedia.org/wiki/걸프_전쟁",
+    "en": "https://en.wikipedia.org/wiki/Gulf_War"
+  },
+  "contributors": [],
+  "last_reviewed": null,
+  "review_status": "community"
+}

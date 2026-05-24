@@ -1,0 +1,38 @@
+{
+  "ww1": {
+    "label": "1차대전",
+    "color": "#8a5a55",
+    "start": 1914,
+    "end": 1918
+  },
+  "interwar": {
+    "label": "전간기",
+    "color": "#7a6a55",
+    "start": 1918,
+    "end": 1939
+  },
+  "ww2": {
+    "label": "2차대전",
+    "color": "#a04545",
+    "start": 1939,
+    "end": 1945
+  },
+  "korean_war": {
+    "label": "한국전쟁",
+    "color": "#ffb01f",
+    "start": 1950,
+    "end": 1953
+  },
+  "cold_war": {
+    "label": "냉전",
+    "color": "#5a8a8a",
+    "start": 1953,
+    "end": 1991
+  },
+  "modern": {
+    "label": "현대",
+    "color": "#8a7050",
+    "start": 1991,
+    "end": 2019
+  }
+}

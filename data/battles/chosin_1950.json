@@ -1,0 +1,69 @@
+{
+  "id": "chosin_1950",
+  "name": "장진호 전투",
+  "name_en": "Battle of Chosin Reservoir",
+  "era": "korean_war",
+  "year": 1950,
+  "year_decimal": 1950.91,
+  "date_display": "1950년 11월 27일 - 12월 13일",
+  "coords": [
+    40.45,
+    127.25
+  ],
+  "sides": [
+    {
+      "name": "미 해병1사단·미7사단",
+      "commander": "올리버 스미스",
+      "troops": 30000,
+      "casualties": 17000,
+      "color": "blue",
+      "victor": true,
+      "symbol": "infantry_combined"
+    },
+    {
+      "name": "중국인민지원군 9병단",
+      "commander": "송시륜",
+      "troops": 120000,
+      "casualties": 48000,
+      "color": "red",
+      "victor": false,
+      "symbol": "infantry"
+    }
+  ],
+  "tactics": [
+    {
+      "ko": "동계 철수기동",
+      "en": "Fighting Withdrawal in Winter",
+      "desc": "영하 30도, 7배 우세한 적 포위망을 뚫고 78km 철수"
+    },
+    {
+      "ko": "\"전진 후퇴\"",
+      "en": "\"Advance to the Rear\"",
+      "desc": "스미스 \"우리는 후퇴하는 게 아니라 다른 방향으로 진격할 뿐\""
+    },
+    {
+      "ko": "공중 보급",
+      "en": "Aerial Resupply",
+      "desc": "제공권으로 포위된 부대에 보급·항공지원·부상자 후송"
+    }
+  ],
+  "significance": "<strong>역사상 가장 성공적인 철수 작전 중 하나.</strong> 7배 우세한 중공군 포위를 뚫고 부대 건제와 장비를 유지한 채 흥남까지. <strong>철수도 공세적 기동의 한 형태</strong>임을 보여준 사례.",
+  "description": "11월 말 중공군 12만이 장진호 협소한 도로변에 매복. 미 해병1사단과 7사단 일부가 영하 30도에서 4면 포위. 스미스는 \"다른 방향으로 진격한다\"며 78km 남쪽 흥남 돌파 명령. 매 1km마다 격전, 동상이 전사자보다 많았다. 12월 13일 흥남 도착, 부상자와 장비 거의 모두 가지고 나온 것이 기적.",
+  "influenced_by": [],
+  "influences": [],
+  "has_simulation": false,
+  "sources": [
+    {
+      "type": "book",
+      "citation": "Russ, M. (1999). Breakout: The Chosin Reservoir Campaign, Korea 1950. Penguin."
+    }
+  ],
+  "wikidata_id": "Q156877",
+  "wikipedia": {
+    "ko": "https://ko.wikipedia.org/wiki/장진호_전투",
+    "en": "https://en.wikipedia.org/wiki/Battle_of_Chosin_Reservoir"
+  },
+  "contributors": [],
+  "last_reviewed": null,
+  "review_status": "community"
+}

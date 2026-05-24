@@ -1,0 +1,17 @@
+{
+  "name": "tactical-atlas",
+  "version": "0.2.0",
+  "description": "전쟁사 작전도 시뮬레이터 — 누구나 기여 가능한 오픈소스 군사사 데이터베이스",
+  "scripts": {
+    "validate": "node scripts/validate.js",
+    "build": "node scripts/build.js",
+    "dev": "node scripts/dev-server.js",
+    "fetch:borders": "bash scripts/fetch-borders.sh",
+    "new:battle": "node scripts/new-battle.js"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  }
+}

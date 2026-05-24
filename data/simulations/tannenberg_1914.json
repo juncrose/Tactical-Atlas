@@ -1,0 +1,680 @@
+{
+  "battle_id": "tannenberg_1914",
+  "duration_h": 120,
+  "bounds": [
+    [
+      53,
+      19
+    ],
+    [
+      54.5,
+      22
+    ]
+  ],
+  "t_label": {
+    "format": "day_hour",
+    "day_offset": 26
+  },
+  "phases": [
+    {
+      "t": 0,
+      "label": "국면 1 · 8월 26일 — 독일 우익 공세"
+    },
+    {
+      "t": 24,
+      "label": "국면 2 · 8월 27일 — 좌익 우회 시작"
+    },
+    {
+      "t": 48,
+      "label": "국면 3 · 8월 28일 — 양익 포위 진행"
+    },
+    {
+      "t": 72,
+      "label": "국면 4 · 8월 29일 — 포위망 완성"
+    },
+    {
+      "t": 96,
+      "label": "국면 5 · 8월 30일 — 섬멸전"
+    }
+  ],
+  "units": [
+    {
+      "id": "ger_hq",
+      "name": "독일 8군 사령부",
+      "name_en": "German 8th Army HQ",
+      "type": "hq",
+      "side": "german",
+      "commander": "힌덴부르크 · 루덴도르프",
+      "strength": "사령부",
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            53.78,
+            20.48
+          ],
+          "status": "지휘 중",
+          "order": "쌍익포위 계획 실행",
+          "objective": "러시아 2군 섬멸"
+        },
+        {
+          "t": 48,
+          "pos": [
+            53.78,
+            20.48
+          ],
+          "status": "지휘 중",
+          "order": "두 군단을 좌익으로 이동",
+          "objective": "좌익 포위 강화"
+        },
+        {
+          "t": 96,
+          "pos": [
+            53.5,
+            20.4
+          ],
+          "status": "지휘 중",
+          "order": "포위망 봉쇄 강화",
+          "objective": "섬멸 완성"
+        }
+      ]
+    },
+    {
+      "id": "ger_i_corps",
+      "name": "독일 1군단",
+      "name_en": "German I Corps",
+      "type": "infantry_combined",
+      "side": "german",
+      "commander": "헤르만 폰 프랑수아 장군",
+      "strength": "약 40000명",
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            53.92,
+            20.3
+          ],
+          "status": "집결 완료",
+          "order": "러시아 2군 좌익 공격",
+          "objective": "러시아 1군단 격퇴"
+        },
+        {
+          "t": 24,
+          "pos": [
+            53.7,
+            20.1
+          ],
+          "status": "진격 중",
+          "order": "남쪽으로 우회 공격",
+          "objective": "러시아 후방 차단"
+        },
+        {
+          "t": 48,
+          "pos": [
+            53.4,
+            20.2
+          ],
+          "status": "돌파 중",
+          "order": "소우호친 점령",
+          "objective": "러시아 후방 도로 차단"
+        },
+        {
+          "t": 72,
+          "pos": [
+            53.35,
+            20.5
+          ],
+          "status": "포위 완성",
+          "order": "동쪽으로 진격해 17군단과 합류",
+          "objective": "포위망 완성"
+        },
+        {
+          "t": 96,
+          "pos": [
+            53.4,
+            20.9
+          ],
+          "status": "섬멸전",
+          "order": "잔적 소탕",
+          "objective": "러시아 2군 완전 격멸"
+        }
+      ]
+    },
+    {
+      "id": "ger_xvii_corps",
+      "name": "독일 17군단",
+      "name_en": "German XVII Corps",
+      "type": "infantry_combined",
+      "side": "german",
+      "commander": "아우구스트 폰 마켄젠 장군",
+      "strength": "약 38000명",
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            54.2,
+            21.2
+          ],
+          "status": "집결 완료",
+          "order": "러시아 2군 우익 공격",
+          "objective": "러시아 6군단 격퇴"
+        },
+        {
+          "t": 24,
+          "pos": [
+            54,
+            21
+          ],
+          "status": "진격 중",
+          "order": "북쪽에서 남하 우회",
+          "objective": "러시아 우익 분쇄"
+        },
+        {
+          "t": 48,
+          "pos": [
+            53.8,
+            20.9
+          ],
+          "status": "돌파 중",
+          "order": "비숍부르크 통과 진격",
+          "objective": "러시아 후방 차단"
+        },
+        {
+          "t": 72,
+          "pos": [
+            53.55,
+            20.8
+          ],
+          "status": "포위 완성",
+          "order": "1군단과 합류",
+          "objective": "포위망 동쪽 완성"
+        },
+        {
+          "t": 96,
+          "pos": [
+            53.5,
+            20.7
+          ],
+          "status": "섬멸전",
+          "order": "잔적 소탕",
+          "objective": "러시아 2군 완전 격멸"
+        }
+      ]
+    },
+    {
+      "id": "ger_xx_corps",
+      "name": "독일 20군단",
+      "name_en": "German XX Corps",
+      "type": "infantry",
+      "side": "german",
+      "commander": "프리드리히 폰 숄츠 장군",
+      "strength": "약 32000명",
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            53.62,
+            20.4
+          ],
+          "status": "방어 중",
+          "order": "러시아 중앙군 견제",
+          "objective": "러시아 중앙을 묶어둠"
+        },
+        {
+          "t": 24,
+          "pos": [
+            53.55,
+            20.45
+          ],
+          "status": "방어 중",
+          "order": "러시아 중앙 진격 견제",
+          "objective": "시간 지연"
+        },
+        {
+          "t": 48,
+          "pos": [
+            53.5,
+            20.5
+          ],
+          "status": "교전 중",
+          "order": "러시아 중앙군 격파",
+          "objective": "포위망 중심 압박"
+        },
+        {
+          "t": 72,
+          "pos": [
+            53.48,
+            20.6
+          ],
+          "status": "돌파 중",
+          "order": "러시아 중앙 분쇄",
+          "objective": "섬멸 가속"
+        },
+        {
+          "t": 96,
+          "pos": [
+            53.5,
+            20.7
+          ],
+          "status": "소탕 중",
+          "order": "잔적 처리",
+          "objective": "─"
+        }
+      ]
+    },
+    {
+      "id": "ger_screen_north",
+      "name": "독일 1예비군단 (북쪽 견제)",
+      "name_en": "German I Reserve Corps (Screen)",
+      "type": "infantry",
+      "side": "german",
+      "commander": "오토 폰 벨로프 장군",
+      "strength": "약 24000명",
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            54.4,
+            21.5
+          ],
+          "status": "견제 중",
+          "order": "러시아 1군 견제 (소수병력)",
+          "objective": "렌넨캄프 묶어둠"
+        },
+        {
+          "t": 48,
+          "pos": [
+            54.4,
+            21.5
+          ],
+          "status": "견제 중",
+          "order": "계속 견제",
+          "objective": "렌넨캄프 진격 지연"
+        },
+        {
+          "t": 96,
+          "pos": [
+            54.3,
+            21.4
+          ],
+          "status": "소수 견제",
+          "order": "주력 합류 후 추격",
+          "objective": "─"
+        }
+      ]
+    },
+    {
+      "id": "rus_2nd_army_hq",
+      "name": "러시아 2군 사령부",
+      "name_en": "Russian 2nd Army HQ",
+      "type": "hq",
+      "side": "russian",
+      "commander": "알렉산드르 삼소노프 장군",
+      "strength": "사령부",
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            53.6,
+            20.55
+          ],
+          "status": "지휘 중",
+          "order": "동프로이센으로 전진",
+          "objective": "쾨니히스베르크 점령"
+        },
+        {
+          "t": 24,
+          "pos": [
+            53.55,
+            20.6
+          ],
+          "status": "지휘 중 (혼란)",
+          "order": "진격 계속",
+          "objective": "쾨니히스베르크 점령 (오판)"
+        },
+        {
+          "t": 48,
+          "pos": [
+            53.5,
+            20.65
+          ],
+          "status": "지휘 곤란",
+          "order": "포위 가능성 보고 수신",
+          "objective": "재배치"
+        },
+        {
+          "t": 72,
+          "pos": [
+            53.45,
+            20.55
+          ],
+          "status": "포위",
+          "order": "후퇴 명령",
+          "objective": "탈출 시도"
+        },
+        {
+          "t": 96,
+          "pos": [
+            53.4,
+            20.5
+          ],
+          "status": "와해",
+          "order": "─",
+          "objective": "─",
+          "destroyed": true
+        }
+      ]
+    },
+    {
+      "id": "rus_i_corps",
+      "name": "러시아 1군단",
+      "name_en": "Russian I Corps",
+      "type": "infantry",
+      "side": "russian",
+      "commander": "레오니드 아르타모노프 장군",
+      "strength": "약 35000명",
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            53.5,
+            20.2
+          ],
+          "status": "진격 중",
+          "order": "북서쪽 진격",
+          "objective": "독일 좌익 격파"
+        },
+        {
+          "t": 24,
+          "pos": [
+            53.5,
+            20.2
+          ],
+          "status": "교전 중",
+          "order": "독일 1군단과 교전",
+          "objective": "─"
+        },
+        {
+          "t": 48,
+          "pos": [
+            53.4,
+            20.3
+          ],
+          "status": "후퇴 중",
+          "order": "뒤로 물러남",
+          "objective": "─"
+        },
+        {
+          "t": 72,
+          "pos": [
+            53.3,
+            20.4
+          ],
+          "status": "와해",
+          "order": "─",
+          "objective": "─",
+          "destroyed": true
+        },
+        {
+          "t": 96,
+          "pos": [
+            53.3,
+            20.4
+          ],
+          "status": "섬멸됨",
+          "order": "─",
+          "objective": "─",
+          "destroyed": true
+        }
+      ]
+    },
+    {
+      "id": "rus_xv_corps",
+      "name": "러시아 15군단",
+      "name_en": "Russian XV Corps",
+      "type": "infantry",
+      "side": "russian",
+      "commander": "니콜라이 마르토스 장군",
+      "strength": "약 40000명",
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            53.55,
+            20.5
+          ],
+          "status": "진격 중",
+          "order": "중앙 돌파 진격",
+          "objective": "독일 20군단 격파"
+        },
+        {
+          "t": 24,
+          "pos": [
+            53.5,
+            20.55
+          ],
+          "status": "교전 중",
+          "order": "독일 20군단과 교전",
+          "objective": "돌파"
+        },
+        {
+          "t": 48,
+          "pos": [
+            53.45,
+            20.6
+          ],
+          "status": "교전 중",
+          "order": "계속 공격",
+          "objective": "돌파 (실패)"
+        },
+        {
+          "t": 72,
+          "pos": [
+            53.45,
+            20.6
+          ],
+          "status": "포위",
+          "order": "돌파 시도 → 후퇴",
+          "objective": "탈출"
+        },
+        {
+          "t": 96,
+          "pos": [
+            53.45,
+            20.6
+          ],
+          "status": "섬멸됨",
+          "order": "─",
+          "objective": "─",
+          "destroyed": true
+        }
+      ]
+    },
+    {
+      "id": "rus_xiii_corps",
+      "name": "러시아 13군단",
+      "name_en": "Russian XIII Corps",
+      "type": "infantry",
+      "side": "russian",
+      "commander": "니콜라이 클류예프 장군",
+      "strength": "약 38000명",
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            53.7,
+            20.7
+          ],
+          "status": "진격 중",
+          "order": "북서쪽 진격",
+          "objective": "알렌슈타인 점령"
+        },
+        {
+          "t": 24,
+          "pos": [
+            53.75,
+            20.65
+          ],
+          "status": "진격 중",
+          "order": "알렌슈타인 점령",
+          "objective": "─"
+        },
+        {
+          "t": 48,
+          "pos": [
+            53.65,
+            20.65
+          ],
+          "status": "교전 중",
+          "order": "남쪽으로 회군",
+          "objective": "15군단 지원"
+        },
+        {
+          "t": 72,
+          "pos": [
+            53.55,
+            20.65
+          ],
+          "status": "포위",
+          "order": "─",
+          "objective": "─"
+        },
+        {
+          "t": 96,
+          "pos": [
+            53.5,
+            20.65
+          ],
+          "status": "섬멸됨",
+          "order": "─",
+          "objective": "─",
+          "destroyed": true
+        }
+      ]
+    },
+    {
+      "id": "rus_vi_corps",
+      "name": "러시아 6군단",
+      "name_en": "Russian VI Corps",
+      "type": "infantry",
+      "side": "russian",
+      "commander": "알렉산드르 블라고베셴스키 장군",
+      "strength": "약 32000명",
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            53.85,
+            21
+          ],
+          "status": "진격 중",
+          "order": "우익 엄호",
+          "objective": "비숍부르크 점령"
+        },
+        {
+          "t": 24,
+          "pos": [
+            53.85,
+            21
+          ],
+          "status": "교전 중",
+          "order": "독일 17군단과 교전",
+          "objective": "우익 사수"
+        },
+        {
+          "t": 48,
+          "pos": [
+            53.65,
+            21.1
+          ],
+          "status": "후퇴 중",
+          "order": "뒤로 물러남",
+          "objective": "─"
+        },
+        {
+          "t": 72,
+          "pos": [
+            53.5,
+            21.3
+          ],
+          "status": "와해",
+          "order": "─",
+          "objective": "─",
+          "destroyed": true
+        },
+        {
+          "t": 96,
+          "pos": [
+            53.5,
+            21.3
+          ],
+          "status": "섬멸됨",
+          "order": "─",
+          "objective": "─",
+          "destroyed": true
+        }
+      ]
+    },
+    {
+      "id": "rus_1st_army",
+      "name": "러시아 1군 (렌넨캄프)",
+      "name_en": "Russian 1st Army (Rennenkampf)",
+      "type": "infantry_combined",
+      "side": "russian",
+      "commander": "파벨 폰 렌넨캄프 장군",
+      "strength": "약 200000명",
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            54.5,
+            21.8
+          ],
+          "status": "북쪽 진격",
+          "order": "쾨니히스베르크로 진격",
+          "objective": "─"
+        },
+        {
+          "t": 24,
+          "pos": [
+            54.5,
+            21.8
+          ],
+          "status": "정지",
+          "order": "진격 정지 (보급 문제)",
+          "objective": "─"
+        },
+        {
+          "t": 48,
+          "pos": [
+            54.5,
+            21.8
+          ],
+          "status": "정지",
+          "order": "대기",
+          "objective": "─"
+        },
+        {
+          "t": 72,
+          "pos": [
+            54.5,
+            21.8
+          ],
+          "status": "뒤늦은 인지",
+          "order": "2군 위급 인지",
+          "objective": "구원 시도 (너무 늦음)"
+        },
+        {
+          "t": 96,
+          "pos": [
+            54.45,
+            21.7
+          ],
+          "status": "느린 남하",
+          "order": "남쪽으로 이동",
+          "objective": "구원 (실패)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "id": "stalingrad_1942",
+  "name": "스탈린그라드 전투",
+  "name_en": "Battle of Stalingrad",
+  "era": "ww2",
+  "year": 1942,
+  "year_decimal": 1942.6,
+  "date_display": "1942년 8월 23일 - 1943년 2월 2일",
+  "coords": [
+    48.708,
+    44.514
+  ],
+  "sides": [
+    {
+      "name": "소비에트 연방",
+      "commander": "주코프 · 추이코프",
+      "troops": 1140000,
+      "casualties": 1130000,
+      "color": "blue",
+      "victor": true,
+      "symbol": "infantry_combined"
+    },
+    {
+      "name": "독일 (6군) · 추축국",
+      "commander": "파울루스",
+      "troops": 1040000,
+      "casualties": 850000,
+      "color": "red",
+      "victor": false,
+      "symbol": "armor_combined"
+    }
+  ],
+  "tactics": [
+    {
+      "ko": "도시전·종심방어",
+      "en": "Urban Defense in Depth",
+      "desc": "추이코프의 \"근접 포옹\" — 독일 항공·포격을 무력화시키는 최단거리 접전"
+    },
+    {
+      "ko": "이중포위 (천왕성 작전)",
+      "en": "Operation Uranus · Double Pincer",
+      "desc": "독일군 측면의 약체 동맹군(루마니아·이탈리아·헝가리)을 노린 동시 협격"
+    },
+    {
+      "ko": "소모 후 결전",
+      "en": "Wear then Strike",
+      "desc": "도시에서 독일군을 소모시킨 뒤 측면에서 결정타"
+    }
+  ],
+  "significance": "<strong>2차대전 동부전선의 전환점.</strong> 추이코프는 \"근접 포옹\"으로 독일 항공·포격 우위를 무력화. 1942년 11월 천왕성 작전으로 독일 6군 30만이 포위되어 2개월 만에 항복. <strong>도시전과 작전적 포위가 결합된 사례.</strong>",
+  "description": "독일 6군은 1942년 9월부터 스탈린그라드 시내 90%를 점령했으나 추이코프의 62군이 볼가강변 일부를 사수했다. 동시에 주코프는 도시 북쪽·남쪽의 약체 추축국 동맹군 전선을 노려 11월 19일 천왕성 작전 개시. 4일 만에 칼라치에서 포위망 완성. 독일 6군 33만이 칼라크 안에 갇혔고 1943년 2월 2일 파울루스 항복.",
+  "influenced_by": [],
+  "influences": [],
+  "has_simulation": false,
+  "sources": [
+    {
+      "type": "book",
+      "citation": "Beevor, A. (1998). Stalingrad: The Fateful Siege 1942–1943. Viking Press."
+    },
+    {
+      "type": "book",
+      "citation": "Glantz, D. (2009). To the Gates of Stalingrad. University Press of Kansas."
+    }
+  ],
+  "wikidata_id": "Q8054",
+  "wikipedia": {
+    "ko": "https://ko.wikipedia.org/wiki/스탈린그라드_전투",
+    "en": "https://en.wikipedia.org/wiki/Battle_of_Stalingrad"
+  },
+  "contributors": [],
+  "last_reviewed": null,
+  "review_status": "community"
+}
