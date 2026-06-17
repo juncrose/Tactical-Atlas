@@ -23,7 +23,10 @@
         "type": "array",
         "minItems": 2,
         "maxItems": 2,
-        "items": { "type": "number" }
+        "items": [
+          { "type": "number", "minimum": -90, "maximum": 90, "description": "위도" },
+          { "type": "number", "minimum": -180, "maximum": 180, "description": "경도" }
+        ]
       },
       "description": "[[남위, 서경], [북위, 동경]] 지도 초기 뷰포트"
     },
@@ -93,7 +96,11 @@
             ],
             "description": "NATO APP-6 호환 유닛 타입"
           },
-          "side": { "type": "string", "description": "battle.sides[].color와 일치" },
+          "side": {
+            "type": "string",
+            "enum": ["blue", "red", "un", "us", "german", "japanese", "soviet", "rok", "kpa", "pva", "british", "french", "russian"],
+            "description": "부대 소속 진영 (SIDE_COLORS의 키 값)"
+          },
           "commander": { "type": "string" },
           "strength": { "type": "string", "description": "병력/장비 규모 자유 표기" },
           "keyframes": {
@@ -110,9 +117,12 @@
                 },
                 "pos": {
                   "type": "array",
+                  "items": [
+                    { "type": "number", "minimum": -90, "maximum": 90, "description": "위도" },
+                    { "type": "number", "minimum": -180, "maximum": 180, "description": "경도" }
+                  ],
                   "minItems": 2,
                   "maxItems": 2,
-                  "items": { "type": "number" },
                   "description": "[위도, 경도]"
                 },
                 "status": {
@@ -130,6 +140,10 @@
                 "destroyed": {
                   "type": "boolean",
                   "description": "이 시점에 부대가 격멸/궤멸되었는지 (지도에서 회색 처리)"
+                },
+                "partial": {
+                  "type": "boolean",
+                  "description": "이 시점에 부대의 일부(예: 다수 척 중 일부)가 파괴/대파되었는지 여부"
                 }
               }
             }

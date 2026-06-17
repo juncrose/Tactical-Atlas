@@ -1,0 +1,9 @@
+# pi coding agent
+.pi/
+
+# Generated / build artifacts
+__pycache__/
+node_modules/
+.gradio/
+package-lock.json
+get-pip.py

@@ -16,7 +16,7 @@
       "commander": "체스터 니미츠 · 스프루언스 · 플레처",
       "troops": 3,
       "casualties": 1,
-      "color": "blue",
+      "color": "us",
       "victor": true,
       "symbol": "naval_air",
       "troop_unit": "항모"
@@ -26,7 +26,7 @@
       "commander": "야마모토 · 나구모",
       "troops": 4,
       "casualties": 4,
-      "color": "red",
+      "color": "japanese",
       "victor": false,
       "symbol": "naval_air",
       "troop_unit": "항모"

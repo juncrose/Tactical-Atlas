@@ -16,7 +16,7 @@
       "commander": "힌덴부르크 · 루덴도르프",
       "troops": 150000,
       "casualties": 13900,
-      "color": "blue",
+      "color": "german",
       "victor": true,
       "symbol": "infantry_combined"
     },
@@ -25,7 +25,7 @@
       "commander": "삼소노프",
       "troops": 230000,
       "casualties": 170000,
-      "color": "red",
+      "color": "russian",
       "victor": false,
       "symbol": "infantry"
     }

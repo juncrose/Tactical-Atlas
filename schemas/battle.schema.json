@@ -42,7 +42,10 @@
     },
     "coords": {
       "type": "array",
-      "items": { "type": "number" },
+      "items": [
+        { "type": "number", "minimum": -90, "maximum": 90, "description": "위도" },
+        { "type": "number", "minimum": -180, "maximum": 180, "description": "경도" }
+      ],
       "minItems": 2,
       "maxItems": 2,
       "description": "[위도, 경도]. 전투의 대표 좌표"
@@ -57,10 +60,14 @@
           "name": { "type": "string", "description": "교전 세력 이름" },
           "commander": { "type": "string", "description": "주요 지휘관" },
           "troops": { "type": "integer", "minimum": 0, "description": "병력 수" },
+          "troop_unit": {
+            "type": "string",
+            "description": "병력 규모 단위 재정의 (기본값: 명. 예: 항모, 사단)"
+          },
           "casualties": { "type": "integer", "minimum": 0, "description": "사상자 수" },
           "color": {
             "type": "string",
-            "enum": ["blue", "red", "un", "us", "german", "japanese", "soviet", "rok", "kpa", "pva", "british", "french"],
+            "enum": ["blue", "red", "un", "us", "german", "japanese", "soviet", "rok", "kpa", "pva", "british", "french", "russian"],
             "description": "지도상 색상 그룹"
           },
           "victor": { "type": "boolean", "description": "승자 여부" },

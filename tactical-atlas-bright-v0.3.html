@@ -2034,16 +2034,21 @@ const SIMULATIONS = {
 // NATO SYMBOL FACTORY
 // ═══════════════════════════════════════════════════════════════
 const SIDE_COLORS = {
-  blue:   { stroke: '#1a3d5f', fill: '#2c5d8f' },
-  red:    { stroke: '#6b1e1e', fill: '#a83232' },
-  un:     { stroke: '#1a3d5f', fill: '#2c5d8f' },
-  us:     { stroke: '#1a3d5f', fill: '#2c5d8f' },
-  german: { stroke: '#1a3d5f', fill: '#2c5d8f' }, // Germans as 'friendly' here for visual contrast
-  kpa:    { stroke: '#6b1e1e', fill: '#a83232' },
-  russian:{ stroke: '#6b1e1e', fill: '#a83232' },
-  japanese:{stroke: '#6b1e1e', fill: '#a83232' }
+  blue:     { stroke: '#1a3d5f', fill: '#2c5d8f' },
+  red:      { stroke: '#6b1e1e', fill: '#a83232' },
+  un:       { stroke: '#1a3d5f', fill: '#2c5d8f' },
+  us:       { stroke: '#1a3d5f', fill: '#2c5d8f' },
+  german:   { stroke: '#1a3d5f', fill: '#2c5d8f' }, // Germans as 'friendly' here for visual contrast
+  kpa:      { stroke: '#6b1e1e', fill: '#a83232' },
+  russian:  { stroke: '#6b1e1e', fill: '#a83232' },
+  japanese: { stroke: '#6b1e1e', fill: '#a83232' },
+  soviet:   { stroke: '#6b1e1e', fill: '#a83232' }, // Red-affiliated
+  pva:      { stroke: '#6b1e1e', fill: '#a83232' }, // Red-affiliated
+  rok:      { stroke: '#1a3d5f', fill: '#2c5d8f' }, // Blue-affiliated
+  british:  { stroke: '#1a3d5f', fill: '#2c5d8f' }, // Blue-affiliated
+  french:   { stroke: '#1a3d5f', fill: '#2c5d8f' }  // Blue-affiliated
 };
-const FRIENDLY_SIDES = new Set(['blue','un','us','german']);
+const FRIENDLY_SIDES = new Set(['blue','un','us','german','rok','british','french']);
 
 function makeNatoSymbol(opts) {
   const { side, type, size = 32, glow = false, destroyed = false, partial = false } = opts;
@@ -2109,11 +2114,14 @@ function makeNatoSymbol(opts) {
     inside = `<circle cx="24" cy="25" r="4" fill="${stroke}"/>`;
   }
 
-  // Destroyed overlay (X)
+  // Destroyed or partial overlay (X or dashed diagonal line)
   let overlay = '';
   if (destroyed) {
     overlay = `<line x1="6" y1="14" x2="42" y2="36" stroke="${stroke}" stroke-width="2"/>
                <line x1="42" y1="14" x2="6" y2="36" stroke="${stroke}" stroke-width="2"/>`;
+  } else if (partial) {
+    // 부분 격멸 상태: 사선 대각 단일 점선 오버레이
+    overlay = `<line x1="6" y1="14" x2="42" y2="36" stroke="${stroke}" stroke-width="2" stroke-dasharray="3 3"/>`;
   }
 
   return `<svg width="${size}" height="${size}" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
@@ -2198,14 +2206,24 @@ const state = {
     animId: null
   },
   timeline: {
-    zoom: 2,  // pixels per year multiplier
-    scroll: 0
-  }
+    zoom: 2  // pixels per year multiplier
+  },
+  _timelineScrollThrottle: 0
 };
 
 // ═══════════════════════════════════════════════════════════════
 // BATTLE MARKER RENDERING
 // ═══════════════════════════════════════════════════════════════
+function getTimelineVisibleRange() {
+  const scrollWrap = document.getElementById('timelineScroll');
+  const pxPerYear = 8 * state.timeline.zoom;
+  const scrollLeft = scrollWrap.scrollLeft;
+  const visibleWidth = scrollWrap.clientWidth;
+  const visibleStartYear = TIMELINE_START + scrollLeft / pxPerYear;
+  const visibleEndYear = TIMELINE_START + (scrollLeft + visibleWidth) / pxPerYear;
+  return { visibleStartYear, visibleEndYear };
+}
+
 function renderBattleMarkers() {
   state.battleMarkers.forEach(m => map.removeLayer(m));
   state.battleMarkers.clear();
@@ -2213,7 +2231,14 @@ function renderBattleMarkers() {
   // hide when simulation is active
   if (state.sim.active) return;
 
-  const filtered = BATTLES.filter(b => state.era === 'all' || b.era === state.era);
+  // Also filter by timeline's visible viewport — battles outside the visible
+  // time range on the scrollable timeline should not appear on the map.
+  const range = getTimelineVisibleRange();
+  const filtered = BATTLES.filter(b => {
+    if (state.era !== 'all' && b.era !== state.era) return false;
+    if (b.year_decimal < range.visibleStartYear || b.year_decimal > range.visibleEndYear) return false;
+    return true;
+  });
   filtered.forEach(battle => {
     const isSel = battle.id === state.selectedId;
     const icon = L.divIcon({
@@ -2595,7 +2620,9 @@ function renderUnitDetail(unitId) {
   const sideLabel = {
     un: '유엔군', us: '미군', german: '독일군',
     kpa: '인민군', russian: '러시아군', japanese: '일본군',
-    blue: '아군', red: '적군'
+    blue: '아군', red: '적군',
+    soviet: '소련군', rok: '한국군', pva: '중공군',
+    british: '영국군', french: '프랑스군'
   }[unit.side] || unit.side;
   const isEnemy = !FRIENDLY_SIDES.has(unit.side);
 
@@ -2621,7 +2648,7 @@ function renderUnitDetail(unitId) {
     <div class="unit-info">
       <div class="unit-back" onclick="exitUnitView()">← 전투 정보로 돌아가기</div>
       <div class="unit-header ${isEnemy ? 'enemy' : ''}">
-        <div class="unit-symbol-large">${makeNatoSymbol({ side: unit.side, type: unit.type, size: 56, destroyed: us.destroyed })}</div>
+        <div class="unit-symbol-large">${makeNatoSymbol({ side: unit.side, type: unit.type, size: 56, destroyed: us.destroyed, partial: us.partial })}</div>
         <div class="unit-name">${unit.name}</div>
         <div class="unit-name-en">${unit.name_en}</div>
         <div class="unit-meta">
@@ -2790,7 +2817,19 @@ function updateViewportIndicator() {
   viewport.style.width = widthPct + '%';
 }
 
-document.getElementById('timelineScroll').addEventListener('scroll', updateViewportIndicator);
+function onTimelineScroll() {
+  updateViewportIndicator();
+  // Throttle map marker re-render to ~150ms for smooth scrolling
+  const now = performance.now();
+  if (now - state._timelineScrollThrottle >= 150) {
+    state._timelineScrollThrottle = now;
+    // Only update markers if no sim is active (sim hides battle markers anyway)
+    if (!state.sim.active) {
+      renderBattleMarkers();
+    }
+  }
+}
+document.getElementById('timelineScroll').addEventListener('scroll', onTimelineScroll);
 
 // Drag viewport on overview
 let isDraggingViewport = false;
@@ -2812,6 +2851,10 @@ window.addEventListener('mousemove', e => {
   const overviewWidth = overview.clientWidth;
   const scrollDx = (dx / overviewWidth) * trackPx;
   document.getElementById('timelineScroll').scrollLeft = dragStartScroll + scrollDx;
+  // Update markers during drag too (throttled internally)
+  if (!state.sim.active) {
+    renderBattleMarkers();
+  }
 });
 window.addEventListener('mouseup', () => {
   isDraggingViewport = false;
@@ -2828,6 +2871,10 @@ document.getElementById('timelineOverview').addEventListener('click', e => {
   const scrollWrap = document.getElementById('timelineScroll');
   const trackPx = parseFloat(track.style.width);
   scrollWrap.scrollLeft = trackPx * clickPct - scrollWrap.clientWidth / 2;
+  // Update markers after overview jump
+  if (!state.sim.active) {
+    renderBattleMarkers();
+  }
 });
 
 // Zoom buttons
@@ -2887,6 +2934,8 @@ setTimeout(() => {
     const x = (battle.year_decimal - TIMELINE_START) * pxPerYear;
     const scrollWrap = document.getElementById('timelineScroll');
     scrollWrap.scrollLeft = x - scrollWrap.clientWidth / 2;
+    // Update markers after setting scroll position
+    renderBattleMarkers();
   }
 }, 1200);
 

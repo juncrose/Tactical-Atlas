@@ -33,29 +33,64 @@ async function main() {
   const name_en = await ask('영어 이름 (필수): ');
   
   console.log('\n시대: ww1 / interwar / ww2 / korean_war / cold_war / modern');
-  const era = await ask('시대 (필수): ');
+  let era = await ask('시대 (필수): ');
+  const validEras = ['ww1', 'interwar', 'ww2', 'korean_war', 'cold_war', 'modern'];
+  while (!validEras.includes(era)) {
+    console.log(`⚠ 올바른 시대를 선택해주세요. (${validEras.join(', ')})`);
+    era = await ask('시대 (필수): ');
+  }
   
-  const year = parseInt(await ask('연도 (필수): '), 10);
+  let yearInput = await ask('연도 (필수): ');
+  let year = parseInt(yearInput, 10);
+  while (isNaN(year) || year < 1886 || year > 2100) {
+    console.log('⚠ 올바른 연도를 입력해주세요. (1886 - 2100)');
+    yearInput = await ask('연도 (필수): ');
+    year = parseInt(yearInput, 10);
+  }
   const date_display = await ask('표시용 날짜 (예: 1943년 7월 5일 - 8월 23일): ');
   
-  const coordsStr = await ask('좌표 "위도, 경도" (예: 51.73, 36.19): ');
-  const coords = coordsStr.split(',').map(s => parseFloat(s.trim()));
+  let coordsStr = await ask('좌표 "위도, 경도" (예: 51.73, 36.19): ');
+  let coords = coordsStr.split(',').map(s => parseFloat(s.trim()));
+  while (coords.length !== 2 || isNaN(coords[0]) || isNaN(coords[1]) || coords[0] < -90 || coords[0] > 90 || coords[1] < -180 || coords[1] > 180) {
+    console.log('⚠ 올바른 형식 및 지리적 범위의 좌표를 입력해주세요. (위도: -90 ~ 90, 경도: -180 ~ 180)');
+    coordsStr = await ask('좌표 "위도, 경도" (예: 51.73, 36.19): ');
+    coords = coordsStr.split(',').map(s => parseFloat(s.trim()));
+  }
   
+  const parseInputInt = (val, defaultValue = 0) => {
+    const parsed = parseInt(val, 10);
+    return isNaN(parsed) || parsed < 0 ? defaultValue : parsed;
+  };
+
+  const validColors = ["blue", "red", "un", "us", "german", "japanese", "soviet", "rok", "kpa", "pva", "british", "french", "russian"];
+
   console.log('\n--- 진영 1 ---');
   const s1_name = await ask('이름: ');
   const s1_cmdr = await ask('사령관: ');
-  const s1_troops = parseInt(await ask('병력 수: '), 10);
-  const s1_cas = parseInt(await ask('사상자 수: '), 10);
-  const s1_color = await ask('색상 (blue/red/un/us/german/soviet/japanese 등): ');
+  const s1_troops = parseInputInt(await ask('병력 수: '), 0);
+  const s1_cas = parseInputInt(await ask('사상자 수: '), 0);
+  
+  let s1_color = await ask('색상 (blue/red/un/us/german/soviet/japanese 등): ');
+  while (!validColors.includes(s1_color)) {
+    console.log(`⚠ 올바른 색상을 선택해주세요. (${validColors.join(', ')})`);
+    s1_color = await ask('색상: ');
+  }
+  
   const s1_victor = (await ask('승자인가요? (y/n): ')).toLowerCase() === 'y';
   const s1_symbol = await ask('심볼 (infantry/infantry_combined/armor/armor_combined/naval_fleet 등): ');
   
   console.log('\n--- 진영 2 ---');
   const s2_name = await ask('이름: ');
   const s2_cmdr = await ask('사령관: ');
-  const s2_troops = parseInt(await ask('병력 수: '), 10);
-  const s2_cas = parseInt(await ask('사상자 수: '), 10);
-  const s2_color = await ask('색상: ');
+  const s2_troops = parseInputInt(await ask('병력 수: '), 0);
+  const s2_cas = parseInputInt(await ask('사상자 수: '), 0);
+  
+  let s2_color = await ask('색상: ');
+  while (!validColors.includes(s2_color)) {
+    console.log(`⚠ 올바른 색상을 선택해주세요. (${validColors.join(', ')})`);
+    s2_color = await ask('색상: ');
+  }
+  
   const s2_symbol = await ask('심볼: ');
   
   const significance = await ask('\n전쟁사적 의의 (1-2문장, 50자 이상): ');

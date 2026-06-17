@@ -6,6 +6,7 @@
     "validate": "node scripts/validate.js",
     "build": "node scripts/build.js",
     "dev": "node scripts/dev-server.js",
+    "dev:share": "python3 app.py",
     "fetch:borders": "bash scripts/fetch-borders.sh",
     "new:battle": "node scripts/new-battle.js"
   },

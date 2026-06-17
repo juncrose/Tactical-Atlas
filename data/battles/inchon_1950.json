@@ -16,7 +16,7 @@
       "commander": "맥아더 · 알몬드",
       "troops": 75000,
       "casualties": 222,
-      "color": "blue",
+      "color": "un",
       "victor": true,
       "symbol": "amphibious"
     },
@@ -25,7 +25,7 @@
       "commander": "월미도 수비대 · 인천 226연대",
       "troops": 6500,
       "casualties": 2700,
-      "color": "red",
+      "color": "kpa",
       "victor": false,
       "symbol": "infantry"
     }

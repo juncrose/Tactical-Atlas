@@ -82,7 +82,11 @@ if (fs.existsSync(TEMPLATE)) {
   template = fs.readFileSync(TEMPLATE, 'utf8');
 } else {
   // 원본 HTML에서 데이터 부분을 제거하고 템플릿화
-  const original = fs.readFileSync(path.join(ROOT, '../tactical-atlas-v2.html'), 'utf8');
+  let originalPath = path.join(ROOT, 'tactical-atlas-bright-v0.3.html');
+  if (!fs.existsSync(originalPath)) {
+    originalPath = path.join(ROOT, '../tactical-atlas-v2.html');
+  }
+  const original = fs.readFileSync(originalPath, 'utf8');
   // const ERAS 부터 SIDE_COLORS 직전까지 제거하고 주입 지점만 남김
   const startMark = 'const ERAS = {';
   const endMark = 'const SIDE_COLORS';

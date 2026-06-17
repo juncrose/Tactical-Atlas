@@ -7,31 +7,56 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&family=Nanum+Myeongjo:wght@800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=IBM+Plex+Serif:wght@400;500;600&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&family=Nanum+Myeongjo:wght@800&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <style>
   :root {
-    --bg-deep: #0a0e0c;
-    --bg-panel: #11181588;
-    --bg-panel-solid: #0f1614;
-    --grid: #1c2a24;
-    --olive: #5a6b3a;
-    --olive-bright: #8a9d5b;
-    --sand: #c9b783;
-    --sand-dim: #8d8055;
-    --amber: #ffb01f;
-    --amber-bright: #ffd166;
-    --red: #d04545;
-    --red-deep: #8a2828;
-    --blue: #4a7cb5;
-    --blue-deep: #2c4d72;
-    --text: #d4d0c4;
-    --text-dim: #8a8674;
-    --text-bright: #f0ebd8;
-    --line: #2b3a32;
+    /* === VINTAGE PAPER MAP — 학술 군사 아카이브 톤 === */
+    --bg-deep: #f0e6d2;        /* 양피지 / 빈티지 종이 */
+    --bg-panel: #e8dcc0ee;     /* 사이드패널 반투명 */
+    --bg-panel-solid: #ebe0c4; /* 사이드패널 솔리드 */
+    --grid: #d4c4a0;           /* 종이 위 모눈선 */
+    
+    /* 액센트 (어두운 군청-갈색 인쇄잉크 느낌) */
+    --olive: #6b6041;          /* 군용 카키 */
+    --olive-bright: #8a7b53;
+    --sand: #8b6f47;           /* 진한 모래색 (제목용) */
+    --sand-dim: #a89478;
+    
+    /* 강조색 — 학술 지도의 인쇄 잉크 */
+    --amber: #c46a19;          /* 오렌지 잉크 (선택 강조) */
+    --amber-bright: #d97f2e;
+    
+    /* 진영 색 — 고전 군사 지도 표기법 */
+    --red: #a83232;            /* 적군 (붉은 잉크) */
+    --red-deep: #6b1e1e;
+    --blue: #2c5d8f;           /* 청군 (군청 잉크) */
+    --blue-deep: #1a3d5f;
+    
+    /* 텍스트 — 어두운 갈색 잉크 */
+    --text: #3a2e1f;
+    --text-dim: #6b5a42;
+    --text-bright: #1f1810;
+    --line: #b8a888;           /* 패널 경계선 */
+    
+    /* 그림자 — 빈티지 종이 효과 */
+    --paper-shadow: 0 2px 8px rgba(75, 55, 30, 0.12);
+    --paper-shadow-strong: 0 4px 16px rgba(75, 55, 30, 0.18);
+  }
+  
+  /* 종이 질감 노이즈 텍스처 (SVG inline) */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.4  0 0 0 0 0.3  0 0 0 0 0.2  0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity: 0.6;
+    mix-blend-mode: multiply;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -59,17 +84,18 @@
   /* === HEADER === */
   header {
     grid-area: header;
-    background: var(--bg-panel-solid);
-    border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, #f0e4c8 0%, #e8dcc0 100%);
+    border-bottom: 2px solid #8b6f47;
     display: flex;
     align-items: stretch;
     position: relative;
+    box-shadow: 0 1px 0 #fff inset, 0 2px 8px rgba(75,55,30,0.08);
   }
   header::after {
     content: '';
     position: absolute;
-    bottom: -1px; left: 0;
-    width: 33%; height: 1px;
+    bottom: -2px; left: 0;
+    width: 33%; height: 2px;
     background: linear-gradient(90deg, var(--amber) 0%, transparent 100%);
   }
   .brand {
@@ -82,7 +108,7 @@
   .brand-mark { width: 30px; height: 30px; }
   .brand-mark svg { width: 100%; height: 100%; }
   .brand-title {
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Cinzel', serif;
     font-size: 20px;
     letter-spacing: 0.12em;
     color: var(--text-bright);
@@ -158,16 +184,16 @@
   .map-wrap {
     grid-area: map;
     position: relative;
-    background: #0a0e0c;
+    background: var(--bg-deep);
     overflow: hidden;
   }
   #map {
     width: 100%; height: 100%;
-    background: #0a0e0c;
+    background: var(--bg-deep);
   }
-  .leaflet-container { background: #0a0e0c !important; outline: none; }
+  .leaflet-container { background: var(--bg-deep) !important; outline: none; }
   .leaflet-control-attribution {
-    background: rgba(10,14,12,0.7) !important;
+    background: rgba(232,220,192,0.85) !important;
     color: var(--text-dim) !important;
     font-size: 9px !important;
     font-family: 'JetBrains Mono', monospace !important;
@@ -208,7 +234,7 @@
     position: absolute;
     top: 14px;
     right: 14px;
-    background: rgba(10,14,12,0.85);
+    background: rgba(232,220,192,0.92);
     border: 1px solid var(--line);
     padding: 6px 10px;
     font-family: 'JetBrains Mono', monospace;
@@ -226,15 +252,15 @@
     border: none !important;
   }
   .nato-marker svg { display: block; cursor: pointer; transition: filter 0.15s; }
-  .nato-marker:hover svg { filter: drop-shadow(0 0 8px var(--amber)); }
-  .nato-marker.selected svg { filter: drop-shadow(0 0 12px var(--amber)) brightness(1.15); }
+  .nato-marker:hover svg { filter: drop-shadow(0 1px 3px rgba(196,106,25,0.6)); }
+  .nato-marker.selected svg { filter: drop-shadow(0 2px 5px rgba(196,106,25,0.8)); }
 
   /* Map legend */
   .map-legend {
     position: absolute;
     bottom: 14px;
     left: 14px;
-    background: rgba(10,14,12,0.92);
+    background: rgba(232,220,192,0.95);
     border: 1px solid var(--line);
     padding: 10px 12px;
     z-index: 401;
@@ -274,13 +300,13 @@
     bottom: 14px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(10,14,12,0.95);
+    background: rgba(232,220,192,0.97);
     border: 1px solid var(--amber);
     padding: 14px 18px;
     z-index: 500;
     min-width: 480px;
     max-width: 720px;
-    box-shadow: 0 0 24px rgba(255,176,31,0.15);
+    box-shadow: var(--paper-shadow-strong);
     display: none;
   }
   .sim-control.active { display: block; }
@@ -303,7 +329,7 @@
     font-size: 10px;
     color: var(--text-bright);
     padding: 2px 8px;
-    background: rgba(255,176,31,0.1);
+    background: rgba(196,106,25,0.12);
     border: 1px solid var(--amber);
     letter-spacing: 0.1em;
     flex-shrink: 0;
@@ -418,10 +444,12 @@
   /* === DETAIL PANEL === */
   .detail {
     grid-area: detail;
-    background: var(--bg-panel-solid);
-    border-left: 1px solid var(--line);
+    background: 
+      linear-gradient(180deg, #ebe0c4 0%, #e3d6b4 100%);
+    border-left: 2px solid #8b6f47;
     overflow-y: auto;
     position: relative;
+    box-shadow: inset 1px 0 0 #fff8e7;
   }
   .detail::-webkit-scrollbar { width: 6px; }
   .detail::-webkit-scrollbar-track { background: var(--bg-panel-solid); }
@@ -439,7 +467,7 @@
     opacity: 0.4;
   }
   .detail-empty-title {
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Cinzel', serif;
     font-size: 18px;
     letter-spacing: 0.1em;
     color: var(--sand);
@@ -454,7 +482,7 @@
   .detail-header {
     padding: 18px 22px 14px;
     border-bottom: 1px solid var(--line);
-    background: linear-gradient(180deg, rgba(255,176,31,0.05) 0%, transparent 100%);
+    background: linear-gradient(180deg, rgba(196,106,25,0.10) 0%, transparent 100%);
     position: relative;
   }
   .detail-header::before {
@@ -512,7 +540,7 @@
   }
   .sim-launch:hover {
     background: linear-gradient(180deg, var(--amber-bright) 0%, var(--amber) 100%);
-    box-shadow: 0 0 16px rgba(255,176,31,0.3);
+    box-shadow: 0 2px 12px rgba(196,106,25,0.25);
   }
   .sim-launch-disabled {
     margin: 16px 22px 0;
@@ -557,7 +585,7 @@
     background: rgba(0,0,0,0.2);
     align-items: center;
   }
-  .belligerent.victor { border-color: var(--amber); background: rgba(255,176,31,0.05); }
+  .belligerent.victor { border-color: var(--amber); background: rgba(196,106,25,0.10); }
   .bel-flag { width: 28px; height: 28px; }
   .bel-flag svg { width: 100%; height: 100%; }
   .bel-name { font-size: 13px; color: var(--text-bright); font-weight: 500; margin-bottom: 2px; }
@@ -571,7 +599,7 @@
   }
   .bel-stats .casualties { color: var(--red); }
   .bel-victor-mark {
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Cinzel', serif;
     font-size: 10px;
     color: var(--amber);
     letter-spacing: 0.15em;
@@ -598,7 +626,7 @@
   }
 
   .significance {
-    background: rgba(255,176,31,0.08);
+    background: rgba(196,106,25,0.14);
     border-left: 2px solid var(--amber);
     padding: 12px 14px;
     font-size: 12px;
@@ -720,18 +748,19 @@
     line-height: 1.5;
   }
   .order-history-item.future { opacity: 0.35; }
-  .order-history-item.current { background: rgba(255,176,31,0.06); padding-left: 8px; margin-left: -8px; }
+  .order-history-item.current { background: rgba(196,106,25,0.12); padding-left: 8px; margin-left: -8px; }
 
   /* === TIMELINE === */
   .timeline {
     grid-area: timeline;
-    background: var(--bg-panel-solid);
-    border-top: 1px solid var(--line);
+    background: linear-gradient(180deg, #e3d6b4 0%, #ebe0c4 100%);
+    border-top: 2px solid #8b6f47;
     padding: 12px 24px 14px;
     display: flex;
     flex-direction: column;
     gap: 8px;
     overflow: hidden;
+    box-shadow: 0 -1px 0 #fff8e7 inset;
   }
   .timeline-header {
     display: flex;
@@ -802,7 +831,7 @@
   .timeline-viewport {
     position: absolute;
     top: 0; bottom: 0;
-    background: rgba(255,176,31,0.15);
+    background: rgba(196,106,25,0.20);
     border-left: 2px solid var(--amber);
     border-right: 2px solid var(--amber);
     cursor: grab;
@@ -865,13 +894,13 @@
   .timeline-battle.selected .timeline-battle-dot {
     background: var(--amber);
     transform: scale(1.5);
-    box-shadow: 0 0 8px var(--amber);
+    box-shadow: 0 0 6px rgba(196,106,25,0.4);
   }
   .timeline-battle-label {
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 10px;
     color: var(--text);
-    background: rgba(10,14,12,0.9);
+    background: rgba(232,220,192,0.94);
     padding: 1px 6px;
     border: 1px solid var(--line);
     white-space: nowrap;
@@ -896,7 +925,7 @@
   /* Tooltip */
   .battle-tooltip {
     position: absolute;
-    background: rgba(10,14,12,0.95);
+    background: rgba(232,220,192,0.97);
     border: 1px solid var(--amber);
     padding: 8px 12px;
     pointer-events: none;
@@ -943,7 +972,7 @@
   }
   .loading.hidden { opacity: 0; visibility: hidden; }
   .loading-title {
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Cinzel', serif;
     font-size: 32px;
     letter-spacing: 0.2em;
     color: var(--amber);
@@ -1006,10 +1035,10 @@
     <div class="brand">
       <div class="brand-mark">
         <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-          <rect x="2" y="2" width="28" height="28" fill="none" stroke="#ffb01f" stroke-width="1.5"/>
-          <line x1="2" y1="16" x2="30" y2="16" stroke="#ffb01f" stroke-width="1"/>
-          <line x1="16" y1="2" x2="16" y2="30" stroke="#ffb01f" stroke-width="1"/>
-          <circle cx="16" cy="16" r="6" fill="none" stroke="#ffb01f" stroke-width="1.5"/>
+          <rect x="2" y="2" width="28" height="28" fill="none" stroke="#c46a19" stroke-width="1.5"/>
+          <line x1="2" y1="16" x2="30" y2="16" stroke="#c46a19" stroke-width="1"/>
+          <line x1="16" y1="2" x2="16" y2="30" stroke="#c46a19" stroke-width="1"/>
+          <circle cx="16" cy="16" r="6" fill="none" stroke="#c46a19" stroke-width="1.5"/>
           <circle cx="16" cy="16" r="2" fill="#ffb01f"/>
         </svg>
       </div>
@@ -1076,7 +1105,7 @@
         <span>적 보병</span>
       </div>
       <div class="legend-row">
-        <div class="legend-sym"><svg viewBox="0 0 30 20"><rect x="1" y="3" width="28" height="14" fill="rgba(255,176,31,0.2)" stroke="#ffb01f" stroke-width="1.5"/><circle cx="15" cy="10" r="5" fill="none" stroke="#ffb01f" stroke-width="1.5"/></svg></div>
+        <div class="legend-sym"><svg viewBox="0 0 30 20"><rect x="1" y="3" width="28" height="14" fill="rgba(196,106,25,0.22)" stroke="#c46a19" stroke-width="1.5"/><circle cx="15" cy="10" r="5" fill="none" stroke="#c46a19" stroke-width="1.5"/></svg></div>
         <span>전투지점</span>
       </div>
     </div>
@@ -1213,7 +1242,7 @@ const BATTLES = [
         "commander": "힌덴부르크 · 루덴도르프",
         "troops": 150000,
         "casualties": 13900,
-        "color": "blue",
+        "color": "german",
         "victor": true,
         "symbol": "infantry_combined"
       },
@@ -1222,7 +1251,7 @@ const BATTLES = [
         "commander": "삼소노프",
         "troops": 230000,
         "casualties": 170000,
-        "color": "red",
+        "color": "russian",
         "victor": false,
         "symbol": "infantry"
       }
@@ -1438,7 +1467,7 @@ const BATTLES = [
         "commander": "체스터 니미츠 · 스프루언스 · 플레처",
         "troops": 3,
         "casualties": 1,
-        "color": "blue",
+        "color": "us",
         "victor": true,
         "symbol": "naval_air",
         "troop_unit": "항모"
@@ -1448,7 +1477,7 @@ const BATTLES = [
         "commander": "야마모토 · 나구모",
         "troops": 4,
         "casualties": 4,
-        "color": "red",
+        "color": "japanese",
         "victor": false,
         "symbol": "naval_air",
         "troop_unit": "항모"
@@ -1799,7 +1828,7 @@ const BATTLES = [
         "commander": "맥아더 · 알몬드",
         "troops": 75000,
         "casualties": 222,
-        "color": "blue",
+        "color": "un",
         "victor": true,
         "symbol": "amphibious"
       },
@@ -1808,7 +1837,7 @@ const BATTLES = [
         "commander": "월미도 수비대 · 인천 226연대",
         "troops": 6500,
         "casualties": 2700,
-        "color": "red",
+        "color": "kpa",
         "victor": false,
         "symbol": "infantry"
       }
@@ -4048,16 +4077,21 @@ Object.keys(SIMULATIONS).forEach(id => {
 
 
 const SIDE_COLORS = {
-  blue:   { stroke: '#4a7cb5', fill: '#2c4d72' },
-  red:    { stroke: '#d04545', fill: '#8a2828' },
-  un:     { stroke: '#4a7cb5', fill: '#2c4d72' },
-  us:     { stroke: '#4a7cb5', fill: '#2c4d72' },
-  german: { stroke: '#4a7cb5', fill: '#2c4d72' }, // Germans as 'friendly' here for visual contrast
-  kpa:    { stroke: '#d04545', fill: '#8a2828' },
-  russian:{ stroke: '#d04545', fill: '#8a2828' },
-  japanese:{stroke: '#d04545', fill: '#8a2828' }
+  blue:     { stroke: '#1a3d5f', fill: '#2c5d8f' },
+  red:      { stroke: '#6b1e1e', fill: '#a83232' },
+  un:       { stroke: '#1a3d5f', fill: '#2c5d8f' },
+  us:       { stroke: '#1a3d5f', fill: '#2c5d8f' },
+  german:   { stroke: '#1a3d5f', fill: '#2c5d8f' }, // Germans as 'friendly' here for visual contrast
+  kpa:      { stroke: '#6b1e1e', fill: '#a83232' },
+  russian:  { stroke: '#6b1e1e', fill: '#a83232' },
+  japanese: { stroke: '#6b1e1e', fill: '#a83232' },
+  soviet:   { stroke: '#6b1e1e', fill: '#a83232' }, // Red-affiliated
+  pva:      { stroke: '#6b1e1e', fill: '#a83232' }, // Red-affiliated
+  rok:      { stroke: '#1a3d5f', fill: '#2c5d8f' }, // Blue-affiliated
+  british:  { stroke: '#1a3d5f', fill: '#2c5d8f' }, // Blue-affiliated
+  french:   { stroke: '#1a3d5f', fill: '#2c5d8f' }  // Blue-affiliated
 };
-const FRIENDLY_SIDES = new Set(['blue','un','us','german']);
+const FRIENDLY_SIDES = new Set(['blue','un','us','german','rok','british','french']);
 
 function makeNatoSymbol(opts) {
   const { side, type, size = 32, glow = false, destroyed = false, partial = false } = opts;
@@ -4123,11 +4157,14 @@ function makeNatoSymbol(opts) {
     inside = `<circle cx="24" cy="25" r="4" fill="${stroke}"/>`;
   }
 
-  // Destroyed overlay (X)
+  // Destroyed or partial overlay (X or dashed diagonal line)
   let overlay = '';
   if (destroyed) {
     overlay = `<line x1="6" y1="14" x2="42" y2="36" stroke="${stroke}" stroke-width="2"/>
                <line x1="42" y1="14" x2="6" y2="36" stroke="${stroke}" stroke-width="2"/>`;
+  } else if (partial) {
+    // 부분 격멸 상태: 사선 대각 단일 점선 오버레이
+    overlay = `<line x1="6" y1="14" x2="42" y2="36" stroke="${stroke}" stroke-width="2" stroke-dasharray="3 3"/>`;
   }
 
   return `<svg width="${size}" height="${size}" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
@@ -4147,7 +4184,7 @@ function makeBattlePin(battle, opts = {}) {
   const size = opts.size || 44;
   const inner = makeNatoSymbol({ side: victor.color, type: victor.symbol, size: 28 });
   return `<svg width="${size}" height="${size}" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="24" cy="24" r="22" fill="rgba(10,14,12,0.92)" stroke="${ringColor}" stroke-width="${ringWidth}" opacity="${ringOpacity}"/>
+    <circle cx="24" cy="24" r="22" fill="rgba(232,220,192,0.95)" stroke="${ringColor}" stroke-width="${ringWidth}" opacity="${ringOpacity}"/>
     <circle cx="24" cy="24" r="22" fill="none" stroke="${ringColor}" stroke-width="0.5" stroke-dasharray="2 3"/>
     ${inner.replace('<svg width="28" height="28"', '<svg x="10" y="10" width="28" height="28"')}
   </svg>`;
@@ -4170,13 +4207,13 @@ const map = L.map('map', {
   preferCanvas: true
 });
 
-// Single dark tile layer (labels baked in) — was 2 layers, now 1
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a> · TACTICAL ATLAS v0.2',
+// 빈티지 종이 맵 — Carto Voyager (밝은 베이지 톤, 학술 지도 느낌)
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a> · TACTICAL ATLAS v0.3',
   subdomains: 'abcd',
   maxZoom: 19,
-  updateWhenIdle: true,      // Don't load tiles during pan
-  keepBuffer: 1               // Keep 1 ring of tiles around viewport
+  updateWhenIdle: true,
+  keepBuffer: 1
 }).addTo(map);
 
 // Throttled coords readout
@@ -4212,14 +4249,24 @@ const state = {
     animId: null
   },
   timeline: {
-    zoom: 2,  // pixels per year multiplier
-    scroll: 0
-  }
+    zoom: 2  // pixels per year multiplier
+  },
+  _timelineScrollThrottle: 0
 };
 
 // ═══════════════════════════════════════════════════════════════
 // BATTLE MARKER RENDERING
 // ═══════════════════════════════════════════════════════════════
+function getTimelineVisibleRange() {
+  const scrollWrap = document.getElementById('timelineScroll');
+  const pxPerYear = 8 * state.timeline.zoom;
+  const scrollLeft = scrollWrap.scrollLeft;
+  const visibleWidth = scrollWrap.clientWidth;
+  const visibleStartYear = TIMELINE_START + scrollLeft / pxPerYear;
+  const visibleEndYear = TIMELINE_START + (scrollLeft + visibleWidth) / pxPerYear;
+  return { visibleStartYear, visibleEndYear };
+}
+
 function renderBattleMarkers() {
   state.battleMarkers.forEach(m => map.removeLayer(m));
   state.battleMarkers.clear();
@@ -4227,7 +4274,14 @@ function renderBattleMarkers() {
   // hide when simulation is active
   if (state.sim.active) return;
 
-  const filtered = BATTLES.filter(b => state.era === 'all' || b.era === state.era);
+  // Also filter by timeline's visible viewport — battles outside the visible
+  // time range on the scrollable timeline should not appear on the map.
+  const range = getTimelineVisibleRange();
+  const filtered = BATTLES.filter(b => {
+    if (state.era !== 'all' && b.era !== state.era) return false;
+    if (b.year_decimal < range.visibleStartYear || b.year_decimal > range.visibleEndYear) return false;
+    return true;
+  });
   filtered.forEach(battle => {
     const isSel = battle.id === state.selectedId;
     const icon = L.divIcon({
@@ -4609,7 +4663,9 @@ function renderUnitDetail(unitId) {
   const sideLabel = {
     un: '유엔군', us: '미군', german: '독일군',
     kpa: '인민군', russian: '러시아군', japanese: '일본군',
-    blue: '아군', red: '적군'
+    blue: '아군', red: '적군',
+    soviet: '소련군', rok: '한국군', pva: '중공군',
+    british: '영국군', french: '프랑스군'
   }[unit.side] || unit.side;
   const isEnemy = !FRIENDLY_SIDES.has(unit.side);
 
@@ -4635,7 +4691,7 @@ function renderUnitDetail(unitId) {
     <div class="unit-info">
       <div class="unit-back" onclick="exitUnitView()">← 전투 정보로 돌아가기</div>
       <div class="unit-header ${isEnemy ? 'enemy' : ''}">
-        <div class="unit-symbol-large">${makeNatoSymbol({ side: unit.side, type: unit.type, size: 56, destroyed: us.destroyed })}</div>
+        <div class="unit-symbol-large">${makeNatoSymbol({ side: unit.side, type: unit.type, size: 56, destroyed: us.destroyed, partial: us.partial })}</div>
         <div class="unit-name">${unit.name}</div>
         <div class="unit-name-en">${unit.name_en}</div>
         <div class="unit-meta">
@@ -4804,7 +4860,19 @@ function updateViewportIndicator() {
   viewport.style.width = widthPct + '%';
 }
 
-document.getElementById('timelineScroll').addEventListener('scroll', updateViewportIndicator);
+function onTimelineScroll() {
+  updateViewportIndicator();
+  // Throttle map marker re-render to ~150ms for smooth scrolling
+  const now = performance.now();
+  if (now - state._timelineScrollThrottle >= 150) {
+    state._timelineScrollThrottle = now;
+    // Only update markers if no sim is active (sim hides battle markers anyway)
+    if (!state.sim.active) {
+      renderBattleMarkers();
+    }
+  }
+}
+document.getElementById('timelineScroll').addEventListener('scroll', onTimelineScroll);
 
 // Drag viewport on overview
 let isDraggingViewport = false;
@@ -4826,6 +4894,10 @@ window.addEventListener('mousemove', e => {
   const overviewWidth = overview.clientWidth;
   const scrollDx = (dx / overviewWidth) * trackPx;
   document.getElementById('timelineScroll').scrollLeft = dragStartScroll + scrollDx;
+  // Update markers during drag too (throttled internally)
+  if (!state.sim.active) {
+    renderBattleMarkers();
+  }
 });
 window.addEventListener('mouseup', () => {
   isDraggingViewport = false;
@@ -4842,6 +4914,10 @@ document.getElementById('timelineOverview').addEventListener('click', e => {
   const scrollWrap = document.getElementById('timelineScroll');
   const trackPx = parseFloat(track.style.width);
   scrollWrap.scrollLeft = trackPx * clickPct - scrollWrap.clientWidth / 2;
+  // Update markers after overview jump
+  if (!state.sim.active) {
+    renderBattleMarkers();
+  }
 });
 
 // Zoom buttons
@@ -4901,6 +4977,8 @@ setTimeout(() => {
     const x = (battle.year_decimal - TIMELINE_START) * pxPerYear;
     const scrollWrap = document.getElementById('timelineScroll');
     scrollWrap.scrollLeft = x - scrollWrap.clientWidth / 2;
+    // Update markers after setting scroll position
+    renderBattleMarkers();
   }
 }, 1200);
 
