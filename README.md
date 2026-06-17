@@ -1,70 +1,62 @@
-# Field Manual Chains — 야전교범 기반 pi-subagents 체인
+# TACTICAL ATLAS
 
-미 육군 야전교범(US Army Field Manuals)의 전술 의사결정 절차를
-`pi-subagents`의 `.chain.md` 워크플로우로 변환한 모음.
+***해당 프로잭트는 아직 준비되지 않았습니다***
 
-군 지휘체계 — 정찰조, 작전참모, 야전부대, 지휘관 — 가 의사결정과 실행을
-어떻게 분리·연결하는지를 그대로 본떠, 멀티 에이전트 오케스트레이션의
-프레임으로 사용한다.
+> **전쟁사를 시간축 위에서 재현하는 오픈소스 작전도 시뮬레이터.**
 
-## 구성
+근대 이후 주요 전투의 *기동, 전술, 영향관계*를 인터랙티브 지도 위에 펼쳐 놓는 프로젝트입니다. 위키피디아가 *무엇이 일어났는가*를 다룬다면, TACTICAL ATLAS는 **그것이 어떻게 일어났는가**를 다룹니다.
 
-```
-.pi/chains/field-manual/
-├── troop-leading-procedures.chain.md   # TLP 8단계 (메인 체인)
-├── clear-hold-build.chain.md           # COIN Clear-Hold-Build
-├── zone-reconnaissance.chain.md        # 5가지 정찰형식 병행
-└── mission-command.chain.md            # 임무형 지휘 (단일 임무)
-docs/
-└── references.md                       # 어떤 FM을 어디에 썼는지
-```
+[![License: MIT](https://img.shields.io/badge/Code-MIT-blue.svg)](LICENSE)
+[![Data: CC BY-SA 4.0](https://img.shields.io/badge/Data-CC%20BY--SA%204.0-green.svg)](LICENSE-DATA)
+[![Battles](https://img.shields.io/badge/battles-14-orange.svg)](data/battles/)
 
-## 어떤 체인을 언제 쓰는가
+## 무엇이 다른가요
 
-| 작업 성격 | 추천 체인 | 비유 |
-|---|---|---|
-| 일반적인 구현 작업 | `troop-leading-procedures` | 소대장의 표준 8단계 |
-| 복잡·장기·다영역 (예: 마이그레이션, 리팩토링) | `clear-hold-build` | 도시 안정화 작전 |
-| 미지의 코드베이스 매핑 / 정보 수집 | `zone-reconnaissance` | 정찰부대 병행 투입 |
-| 빠르고 작은 단일 임무 | `mission-command` | 분견대 위임 |
+| 기존 도구 | TACTICAL ATLAS |
+| --- | --- |
+| Wikipedia 전투 항목 | 시간축 위에서 부대 기동을 *재생* |
+| Chronas.org (역사 지도) | 국경 변천 + **전술 시뮬레이션** |
+| 군사사 책 | 인터랙티브, 누구나 기여 가능 |
 
-## 군 지휘체계 → 에이전트 매핑 요약
+## 어떤 전투를 다루나요
 
-| 군 직책 | 에이전트 | 역할 |
-|---|---|---|
-| S-2 / Scout Platoon | `scout` | 정찰·정보수집 |
-| G-2 분석관 | `researcher` | 외부 교리·선례 조사 |
-| XO / 참모통합 | `context-builder` | 컨텍스트 통합·WARNO |
-| S-3 작전참모 | `planner` | 작전계획·OPORD |
-| 야전부대 | `worker` | 임무 실행 |
-| IG / 선임 NCO | `reviewer` | AAR·검증 |
-| 지휘관 | `oracle` | 의도 일관성 보장 |
-| 파견대 | `delegate` | 단발 위임 |
+현재 14개 전투, 3개 시뮬레이션. 1차대전 ~ 걸프전 범위.
 
-## 핵심 전술 개념 (자세한 출처는 `docs/references.md` 참조)
+- **1차대전**: 타넨베르크, 베르됭
+- **2차대전**: 프랑스 침공, 미드웨이, 스탈린그라드, 노르망디
+- **한국전쟁**: 낙동강, 다부동, 인천, 장진호, 현리, 백마고지
+- **현대**: 6일 전쟁, 걸프 전쟁
 
-- **METT-TC** — 임무·적·지형·부대·시간·민간 분석 프레임 (FM 3-21.8)
-- **OAKOC** — 지형의 군사적 요소 5가지 (FM 3-21.8)
-- **TLP 8단계** — 소대장의 표준 의사결정 사이클 (FM 3-21.8)
-- **MDMP / 5단락 OPORD** — 작전참모의 정식 절차 (FM 5-0)
-- **Mission Command 6원칙** — 임무형 지휘 (FM 6-0)
-- **정찰 7대 원칙** — 정찰조의 작전 철학 (FM 3-90)
-- **5가지 정찰형식** — Route/Area/Zone/Force/Special (ADRP 3-90)
-- **AAR 4대 질문** — 사후 검토 표준 (FM 7-0)
-- **7 Lines of Effort** — COIN 다영역 노력선 (FM 3-24.2)
-- **Clear-Hold-Build** — COIN 3단계 접근 (FM 3-24)
+각 전투에는: 양측 사령관·병력·사상자, 사용된 전술 2-4개, 전쟁사적 의의, 다른 전투와의 영향관계, 위키피디아/위키데이터 링크, 학술 출처가 포함됩니다.
 
-## 사용 방법
+## 기여하는 법
 
-`pi-subagents`가 설치된 환경에서 본 디렉토리의 `.pi/chains/`를
-프로젝트 루트에 두면 자동으로 디스커버리된다.
+**코드를 몰라도 기여 가능합니다.** 모든 데이터는 사람이 읽기 쉬운 JSON 파일이에요.
 
-```text
-/run-chain field-manual.troop-leading-procedures -- "사용자 인증 API 추가"
+| 하고 싶은 것 | 보세요 |
+| --- | --- |
+| 새 전투 추가 | [CONTRIBUTING.md - 새 전투 추가](CONTRIBUTING.md#새-전투-추가) |
+| 시뮬레이션(부대 기동) 추가 | [CONTRIBUTING.md - 시뮬레이션 추가](CONTRIBUTING.md#시뮬레이션-추가) |
+| 데이터 오류 신고 | [Issue 열기](../../issues/new?template=data_error.yml) |
+| 새 전투 제안 (직접 작성 X) | [Issue 열기](../../issues/new?template=battle_request.yml) |
+
+## 로컬에서 실행
+
+```bash
+git clone https://github.com/juncrose/Tactical-Atlas.git
+cd Tactical-Atlas
+npm install
+npm run dev         # 로컬 서버 띄우기
+npm run validate    # 데이터 검증
+npm run fetch:borders  # CShapes 국경 데이터 받기 (선택)
 ```
 
-## 출처
+## 라이선스
 
-- 위키피디아: https://en.wikipedia.org/wiki/United_States_Army_Field_Manuals
-- 대상 저장소 (체인 포맷): https://github.com/nicobailon/pi-subagents
-- 개별 야전교범 인용 — `docs/references.md` 참조
+- **코드** (`src/`, `scripts/`): MIT
+- **데이터** (`data/`): CC BY-SA 4.0 — 출처 표기 + 동일 라이선스 공유
+- **국경 데이터** (`data/borders/`): CC BY 4.0 (CShapes 2.0, Schvitz et al. 2022)
+
+## 감사
+
+이 프로젝트는 [Chronas](https://chronas.org/) (Dietmar Aumann)의 *누구나 기여하는 역사 지도* 정신에서 영감을 받았습니다. 다만 Chronas가 *광역 역사*에 집중한다면, 본 프로젝트는 *전술 깊이*에 집중합니다.
